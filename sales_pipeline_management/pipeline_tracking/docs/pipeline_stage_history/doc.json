@@ -1,0 +1,26 @@
+{
+  "doc_key": "pipeline_stage_history",
+  "doc_title": "Pipeline Stage History",
+  "doc_kind": "ledger",
+  "status": "draft",
+  "module_id": "sales_pipeline_management",
+  "submodule_id": "pipeline_tracking",
+  "app_id": "sales",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "ledger",
+  "classification": {
+    "archetype": "ledger",
+    "bundle": "operations"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "operations",
+    "app": "sales",
+    "module": "sales_pipeline_management",
+    "submodule": "pipeline_tracking",
+    "reference_doc_id": "pipeline_stage_history",
+    "evidence_gaps": [
+      "automated vs manual stage change rules"
+    ]
+  }
+}

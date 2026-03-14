@@ -1,0 +1,8 @@
+{
+  "docs": [
+    "account_interaction_log",
+    "contact_record",
+    "customer_account",
+    "renewal_case"
+  ]
+}

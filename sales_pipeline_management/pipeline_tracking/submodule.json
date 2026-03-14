@@ -1,0 +1,8 @@
+{
+  "id": "pipeline_tracking",
+  "title": "Pipeline Tracking",
+  "app_id": "sales",
+  "module_id": "sales_pipeline_management",
+  "type": "submodule",
+  "status": "draft"
+}

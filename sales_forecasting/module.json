@@ -1,0 +1,8 @@
+{
+  "id": "sales_forecasting",
+  "title": "Sales Forecasting",
+  "app_id": "sales",
+  "type": "module",
+  "status": "draft",
+  "supports_submodules": true
+}

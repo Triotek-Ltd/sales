@@ -1,0 +1,27 @@
+{
+  "doc_key": "lead_record",
+  "doc_title": "Lead Record",
+  "doc_kind": "master",
+  "status": "draft",
+  "module_id": "sales_prospecting",
+  "submodule_id": "lead_generation",
+  "app_id": "sales",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "master",
+  "classification": {
+    "archetype": "master",
+    "bundle": "operations"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "operations",
+    "app": "sales",
+    "module": "sales_prospecting",
+    "submodule": "lead_generation",
+    "reference_doc_id": "lead_record",
+    "evidence_gaps": [
+      "deduplication rules",
+      "account-conversion logic"
+    ]
+  }
+}

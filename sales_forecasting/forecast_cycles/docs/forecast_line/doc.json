@@ -1,0 +1,27 @@
+{
+  "doc_key": "forecast_line",
+  "doc_title": "Forecast Line",
+  "doc_kind": "ledger",
+  "status": "draft",
+  "module_id": "sales_forecasting",
+  "submodule_id": "forecast_cycles",
+  "app_id": "sales",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "ledger",
+  "classification": {
+    "archetype": "ledger",
+    "bundle": "operations"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "operations",
+    "app": "sales",
+    "module": "sales_forecasting",
+    "submodule": "forecast_cycles",
+    "reference_doc_id": "forecast_line",
+    "evidence_gaps": [
+      "line-grain choice",
+      "reconciliation to won revenue"
+    ]
+  }
+}

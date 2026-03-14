@@ -1,0 +1,27 @@
+{
+  "doc_key": "renewal_case",
+  "doc_title": "Renewal Case",
+  "doc_kind": "workflow_case",
+  "status": "draft",
+  "module_id": "customer_relationship_management",
+  "submodule_id": "renewal_followup",
+  "app_id": "sales",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "workflow_case",
+  "classification": {
+    "archetype": "workflow_case",
+    "bundle": "operations"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "operations",
+    "app": "sales",
+    "module": "customer_relationship_management",
+    "submodule": "renewal_followup",
+    "reference_doc_id": "renewal_case",
+    "evidence_gaps": [
+      "contract-source linkage",
+      "renewal-opportunity handoff"
+    ]
+  }
+}

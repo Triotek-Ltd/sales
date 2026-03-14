@@ -1,0 +1,27 @@
+{
+  "doc_key": "qualification_case",
+  "doc_title": "Qualification Case",
+  "doc_kind": "workflow_case",
+  "status": "draft",
+  "module_id": "sales_prospecting",
+  "submodule_id": "qualification",
+  "app_id": "sales",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "workflow_case",
+  "classification": {
+    "archetype": "workflow_case",
+    "bundle": "operations"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "operations",
+    "app": "sales",
+    "module": "sales_prospecting",
+    "submodule": "qualification",
+    "reference_doc_id": "qualification_case",
+    "evidence_gaps": [
+      "qualification model",
+      "handoff rules into opportunity"
+    ]
+  }
+}

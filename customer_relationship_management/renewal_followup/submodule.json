@@ -1,0 +1,8 @@
+{
+  "id": "renewal_followup",
+  "title": "Renewal Followup",
+  "app_id": "sales",
+  "module_id": "customer_relationship_management",
+  "type": "submodule",
+  "status": "draft"
+}

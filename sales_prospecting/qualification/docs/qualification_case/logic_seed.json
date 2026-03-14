@@ -1,0 +1,139 @@
+{
+  "doc_id": "qualification_case",
+  "doc_title": "Qualification Case",
+  "archetype": "workflow_case",
+  "doc_kind": "workflow_case",
+  "actions": [
+    "create",
+    "assign",
+    "review",
+    "qualify",
+    "disqualify",
+    "close",
+    "archive"
+  ],
+  "lifecycle": {
+    "initial_state": "open",
+    "states": [
+      "open",
+      "in_review",
+      "qualified",
+      "disqualified",
+      "closed",
+      "archived"
+    ],
+    "terminal_states": [
+      "closed",
+      "archived"
+    ]
+  },
+  "related_doc_count": 3,
+  "fetch_rule_count": 0,
+  "action_handler_count": 7,
+  "archetype_profile": {
+    "workflow_profile": {
+      "mode": "case_flow",
+      "supports_assignment": true,
+      "supports_escalation": true
+    },
+    "reporting_profile": {
+      "supports_snapshots": true,
+      "supports_outputs": false
+    },
+    "integration_profile": {
+      "external_sync_enabled": false
+    },
+    "lifecycle_states": [
+      "open",
+      "in_review",
+      "qualified",
+      "disqualified",
+      "closed",
+      "archived"
+    ],
+    "is_transactional": false
+  },
+  "contract_summary": {
+    "title_field": "title",
+    "status_field": "workflow_state",
+    "reference_field": "reference_no",
+    "required_fields": [
+      "title",
+      "workflow_state"
+    ],
+    "field_purposes": {
+      "workflow_state": "lifecycle_state",
+      "owner": "actor_reference"
+    },
+    "search_fields": [
+      "title",
+      "reference_no",
+      "description",
+      "case_code",
+      "lead",
+      "qualification_criteria"
+    ],
+    "list_columns": [
+      "title",
+      "reference_no",
+      "workflow_state",
+      "modified"
+    ],
+    "initial_state": "open",
+    "lifecycle_states": [
+      "open",
+      "in_review",
+      "qualified",
+      "disqualified",
+      "closed",
+      "archived"
+    ],
+    "terminal_states": [
+      "closed",
+      "archived"
+    ],
+    "action_targets": {
+      "create": null,
+      "assign": "in_review",
+      "review": "in_review",
+      "qualify": null,
+      "disqualify": null,
+      "close": "closed",
+      "archive": "archived"
+    }
+  },
+  "workflow_hints": {
+    "business_objective": "turn raw prospects into qualified leads with documented outreach and qualification evidence",
+    "actors": [
+      "sales rep",
+      "sales manager",
+      "reviewer"
+    ],
+    "start_condition": "a target customer or lead source is identified",
+    "ordered_steps": [
+      "Open and progress the qualification case."
+    ],
+    "primary_actions": [
+      "create",
+      "assign",
+      "qualify",
+      "disqualify",
+      "close"
+    ],
+    "primary_transitions": [
+      "qualification_case: opened -> in_review -> qualified or disqualified -> closed"
+    ],
+    "downstream_effects": [
+      "feeds opportunity, negotiation, and forecast workflows"
+    ]
+  },
+  "related_docs": [
+    "lead_record",
+    "outreach_activity",
+    "opportunity_record"
+  ],
+  "borrowed_fields": [
+    "lead source",
+    "segment from lead_record"
+  ]
+}

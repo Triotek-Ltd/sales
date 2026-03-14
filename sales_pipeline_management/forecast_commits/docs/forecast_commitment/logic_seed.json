@@ -1,0 +1,136 @@
+{
+  "doc_id": "forecast_commitment",
+  "doc_title": "Forecast Commitment",
+  "archetype": "transaction",
+  "doc_kind": "transaction",
+  "actions": [
+    "create",
+    "review",
+    "commit",
+    "revise",
+    "archive"
+  ],
+  "lifecycle": {
+    "initial_state": "draft",
+    "states": [
+      "draft",
+      "reviewed",
+      "committed",
+      "revised",
+      "archived"
+    ],
+    "terminal_states": [
+      "archived"
+    ]
+  },
+  "related_doc_count": 3,
+  "fetch_rule_count": 0,
+  "action_handler_count": 5,
+  "archetype_profile": {
+    "workflow_profile": {
+      "mode": "transaction_flow",
+      "supports_submission": true
+    },
+    "reporting_profile": {
+      "supports_snapshots": true,
+      "supports_outputs": true
+    },
+    "integration_profile": {
+      "external_sync_enabled": true,
+      "tracks_external_refs": true
+    },
+    "lifecycle_states": [
+      "draft",
+      "reviewed",
+      "committed",
+      "revised",
+      "archived"
+    ],
+    "is_transactional": true
+  },
+  "contract_summary": {
+    "title_field": "title",
+    "status_field": "workflow_state",
+    "reference_field": "reference_no",
+    "required_fields": [
+      "title",
+      "workflow_state",
+      "transaction_date"
+    ],
+    "field_purposes": {
+      "workflow_state": "lifecycle_state",
+      "transaction_date": "transaction_date",
+      "party": "primary_party",
+      "currency": "currency_code",
+      "total_amount": "total_amount",
+      "committed_amount": "monetary_value"
+    },
+    "search_fields": [
+      "title",
+      "reference_no",
+      "description",
+      "commitment_code",
+      "opportunity_or_rep",
+      "forecast_period"
+    ],
+    "list_columns": [
+      "title",
+      "reference_no",
+      "transaction_date",
+      "party",
+      "total_amount",
+      "workflow_state"
+    ],
+    "initial_state": "draft",
+    "lifecycle_states": [
+      "draft",
+      "reviewed",
+      "committed",
+      "revised",
+      "archived"
+    ],
+    "terminal_states": [
+      "archived"
+    ],
+    "action_targets": {
+      "create": null,
+      "review": "reviewed",
+      "commit": null,
+      "revise": null,
+      "archive": "archived"
+    }
+  },
+  "workflow_hints": {
+    "business_objective": "translate historical performance, market signals, and pipeline opportunity data into forecast commitments and management targets",
+    "actors": [
+      "sales manager",
+      "sales operations analyst",
+      "team lead",
+      "management reviewer"
+    ],
+    "start_condition": "a new forecast period is opened",
+    "ordered_steps": [
+      "Collect pipeline, history, and demand inputs."
+    ],
+    "primary_actions": [
+      "create",
+      "review",
+      "commit"
+    ],
+    "primary_transitions": [
+      "forecast_commitment: draft -> reviewed -> committed"
+    ],
+    "downstream_effects": [
+      "feeds production planning, demand planning, budgeting, and management reporting"
+    ]
+  },
+  "related_docs": [
+    "opportunity_record",
+    "sales_forecast",
+    "forecast_line"
+  ],
+  "borrowed_fields": [
+    "opportunity value",
+    "stage from opportunity_record"
+  ]
+}

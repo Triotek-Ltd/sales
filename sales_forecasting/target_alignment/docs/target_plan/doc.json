@@ -1,0 +1,27 @@
+{
+  "doc_key": "target_plan",
+  "doc_title": "Target Plan",
+  "doc_kind": "configuration",
+  "status": "draft",
+  "module_id": "sales_forecasting",
+  "submodule_id": "target_alignment",
+  "app_id": "sales",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "configuration",
+  "classification": {
+    "archetype": "configuration",
+    "bundle": "operations"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "operations",
+    "app": "sales",
+    "module": "sales_forecasting",
+    "submodule": "target_alignment",
+    "reference_doc_id": "target_plan",
+    "evidence_gaps": [
+      "target hierarchy",
+      "alignment to territory/team structure"
+    ]
+  }
+}

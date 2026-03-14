@@ -1,0 +1,9 @@
+{
+  "modules": [
+    "customer_relationship_management",
+    "sales_forecasting",
+    "sales_negotiation",
+    "sales_pipeline_management",
+    "sales_prospecting"
+  ]
+}

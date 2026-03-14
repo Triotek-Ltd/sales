@@ -1,0 +1,27 @@
+{
+  "doc_key": "forecast_review",
+  "doc_title": "Forecast Review",
+  "doc_kind": "event",
+  "status": "draft",
+  "module_id": "sales_forecasting",
+  "submodule_id": "target_alignment",
+  "app_id": "sales",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "event",
+  "classification": {
+    "archetype": "event",
+    "bundle": "operations"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "operations",
+    "app": "sales",
+    "module": "sales_forecasting",
+    "submodule": "target_alignment",
+    "reference_doc_id": "forecast_review",
+    "evidence_gaps": [
+      "decision capture",
+      "override rules"
+    ]
+  }
+}

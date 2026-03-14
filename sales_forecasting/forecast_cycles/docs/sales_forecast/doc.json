@@ -1,0 +1,27 @@
+{
+  "doc_key": "sales_forecast",
+  "doc_title": "Sales Forecast",
+  "doc_kind": "transaction",
+  "status": "draft",
+  "module_id": "sales_forecasting",
+  "submodule_id": "forecast_cycles",
+  "app_id": "sales",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "transaction",
+  "classification": {
+    "archetype": "transaction",
+    "bundle": "operations"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "operations",
+    "app": "sales",
+    "module": "sales_forecasting",
+    "submodule": "forecast_cycles",
+    "reference_doc_id": "sales_forecast",
+    "evidence_gaps": [
+      "forecast versioning",
+      "roll-up rules"
+    ]
+  }
+}

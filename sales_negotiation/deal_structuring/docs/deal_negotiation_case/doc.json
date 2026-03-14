@@ -1,0 +1,27 @@
+{
+  "doc_key": "deal_negotiation_case",
+  "doc_title": "Deal Negotiation Case",
+  "doc_kind": "workflow_case",
+  "status": "draft",
+  "module_id": "sales_negotiation",
+  "submodule_id": "deal_structuring",
+  "app_id": "sales",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "workflow_case",
+  "classification": {
+    "archetype": "workflow_case",
+    "bundle": "operations"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "operations",
+    "app": "sales",
+    "module": "sales_negotiation",
+    "submodule": "deal_structuring",
+    "reference_doc_id": "deal_negotiation_case",
+    "evidence_gaps": [
+      "counterproposal structure",
+      "approval layering"
+    ]
+  }
+}

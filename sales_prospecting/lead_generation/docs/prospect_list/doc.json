@@ -1,0 +1,27 @@
+{
+  "doc_key": "prospect_list",
+  "doc_title": "Prospect List",
+  "doc_kind": "transaction",
+  "status": "draft",
+  "module_id": "sales_prospecting",
+  "submodule_id": "lead_generation",
+  "app_id": "sales",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "transaction",
+  "classification": {
+    "archetype": "transaction",
+    "bundle": "operations"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "operations",
+    "app": "sales",
+    "module": "sales_prospecting",
+    "submodule": "lead_generation",
+    "reference_doc_id": "prospect_list",
+    "evidence_gaps": [
+      "list-source rules",
+      "refresh policy"
+    ]
+  }
+}

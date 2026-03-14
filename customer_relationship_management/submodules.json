@@ -1,0 +1,6 @@
+{
+  "submodules": [
+    "account_management",
+    "renewal_followup"
+  ]
+}

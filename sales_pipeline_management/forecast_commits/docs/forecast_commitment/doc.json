@@ -1,0 +1,27 @@
+{
+  "doc_key": "forecast_commitment",
+  "doc_title": "Forecast Commitment",
+  "doc_kind": "transaction",
+  "status": "draft",
+  "module_id": "sales_pipeline_management",
+  "submodule_id": "forecast_commits",
+  "app_id": "sales",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "transaction",
+  "classification": {
+    "archetype": "transaction",
+    "bundle": "operations"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "operations",
+    "app": "sales",
+    "module": "sales_pipeline_management",
+    "submodule": "forecast_commits",
+    "reference_doc_id": "forecast_commitment",
+    "evidence_gaps": [
+      "rep/team hierarchy",
+      "revision policy"
+    ]
+  }
+}

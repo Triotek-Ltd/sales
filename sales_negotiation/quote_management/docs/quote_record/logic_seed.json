@@ -1,0 +1,153 @@
+{
+  "doc_id": "quote_record",
+  "doc_title": "Quote Record",
+  "archetype": "transaction",
+  "doc_kind": "transaction",
+  "actions": [
+    "create",
+    "review",
+    "approve",
+    "issue",
+    "accept",
+    "expire",
+    "cancel",
+    "archive"
+  ],
+  "lifecycle": {
+    "initial_state": "draft",
+    "states": [
+      "draft",
+      "submitted",
+      "approved",
+      "accepted",
+      "expired",
+      "cancelled",
+      "archived"
+    ],
+    "terminal_states": [
+      "archived"
+    ]
+  },
+  "related_doc_count": 5,
+  "fetch_rule_count": 0,
+  "action_handler_count": 8,
+  "archetype_profile": {
+    "workflow_profile": {
+      "mode": "transaction_flow",
+      "supports_submission": true
+    },
+    "reporting_profile": {
+      "supports_snapshots": true,
+      "supports_outputs": true
+    },
+    "integration_profile": {
+      "external_sync_enabled": true,
+      "tracks_external_refs": true
+    },
+    "lifecycle_states": [
+      "draft",
+      "submitted",
+      "approved",
+      "accepted",
+      "expired",
+      "cancelled",
+      "archived"
+    ],
+    "is_transactional": true
+  },
+  "contract_summary": {
+    "title_field": "title",
+    "status_field": "workflow_state",
+    "reference_field": "reference_no",
+    "required_fields": [
+      "title",
+      "workflow_state",
+      "transaction_date"
+    ],
+    "field_purposes": {
+      "workflow_state": "lifecycle_state",
+      "transaction_date": "transaction_date",
+      "party": "primary_party",
+      "currency": "currency_code",
+      "total_amount": "total_amount",
+      "issue_date": "schedule_marker",
+      "validity_date": "schedule_marker"
+    },
+    "search_fields": [
+      "title",
+      "reference_no",
+      "description",
+      "quote_code",
+      "customer_or_lead",
+      "issue_date"
+    ],
+    "list_columns": [
+      "title",
+      "reference_no",
+      "transaction_date",
+      "party",
+      "total_amount",
+      "workflow_state"
+    ],
+    "initial_state": "draft",
+    "lifecycle_states": [
+      "draft",
+      "submitted",
+      "approved",
+      "accepted",
+      "expired",
+      "cancelled",
+      "archived"
+    ],
+    "terminal_states": [
+      "archived"
+    ],
+    "action_targets": {
+      "create": null,
+      "review": null,
+      "approve": "approved",
+      "issue": null,
+      "accept": null,
+      "expire": null,
+      "cancel": null,
+      "archive": "archived"
+    }
+  },
+  "workflow_hints": {
+    "business_objective": "manage proposal revisions, negotiation decisions, and final agreement closure with a prospect",
+    "actors": [
+      "sales rep",
+      "approver",
+      "customer negotiator"
+    ],
+    "start_condition": "a proposal is presented to a prospect",
+    "ordered_steps": [
+      "Issue the sales proposal and opening quote.",
+      "Revise quote and commercial terms as needed."
+    ],
+    "primary_actions": [
+      "create",
+      "review",
+      "issue",
+      "update",
+      "approve"
+    ],
+    "primary_transitions": [
+      "quote_record: draft -> active",
+      "quote_record: active -> revised -> approved"
+    ],
+    "downstream_effects": [
+      "feeds order capture, billing, and relationship management"
+    ]
+  },
+  "related_docs": [
+    "lead_record",
+    "customer_account",
+    "deal_negotiation_case",
+    "pricing_exception_request",
+    "opportunity_record"
+  ],
+  "borrowed_fields": [
+    "target party details from lead_record or customer_account"
+  ]
+}

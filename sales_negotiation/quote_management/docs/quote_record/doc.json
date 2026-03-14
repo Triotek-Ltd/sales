@@ -1,0 +1,27 @@
+{
+  "doc_key": "quote_record",
+  "doc_title": "Quote Record",
+  "doc_kind": "transaction",
+  "status": "draft",
+  "module_id": "sales_negotiation",
+  "submodule_id": "quote_management",
+  "app_id": "sales",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "transaction",
+  "classification": {
+    "archetype": "transaction",
+    "bundle": "operations"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "operations",
+    "app": "sales",
+    "module": "sales_negotiation",
+    "submodule": "quote_management",
+    "reference_doc_id": "quote_record",
+    "evidence_gaps": [
+      "quote-line schema",
+      "conversion-to-order rules"
+    ]
+  }
+}

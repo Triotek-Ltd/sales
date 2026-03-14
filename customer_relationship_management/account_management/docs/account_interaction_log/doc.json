@@ -1,0 +1,27 @@
+{
+  "doc_key": "account_interaction_log",
+  "doc_title": "Account Interaction Log",
+  "doc_kind": "ledger",
+  "status": "draft",
+  "module_id": "customer_relationship_management",
+  "submodule_id": "account_management",
+  "app_id": "sales",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "ledger",
+  "classification": {
+    "archetype": "ledger",
+    "bundle": "operations"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "operations",
+    "app": "sales",
+    "module": "customer_relationship_management",
+    "submodule": "account_management",
+    "reference_doc_id": "account_interaction_log",
+    "evidence_gaps": [
+      "interaction taxonomy",
+      "follow-up automation"
+    ]
+  }
+}
