@@ -8,7 +8,7 @@ ACTION_ID = "update"
 ACTION_RULE = {'allowed_in_states': ['active'], 'transitions_to': None}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['customer_account', 'account_interaction_log'], 'borrowed_fields': ['account identity from customer_account'], 'inferred_roles': ['account owner']}, 'actors': ['account owner'], 'action_actors': {'create': ['account owner'], 'update': ['account owner'], 'review': ['account owner'], 'archive': ['account owner']}}
 
 def handle_update(payload: dict, context: dict | None = None) -> dict:
     context = context or {}

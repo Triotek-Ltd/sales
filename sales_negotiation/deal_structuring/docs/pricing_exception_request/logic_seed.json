@@ -63,7 +63,8 @@
     ],
     "field_purposes": {
       "workflow_state": "lifecycle_state",
-      "approver": "actor_reference"
+      "approver": "actor_reference",
+      "related_quote_record": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -102,7 +103,48 @@
       "archive": "archived"
     }
   },
-  "workflow_hints": {},
+  "workflow_hints": {
+    "relation_context": {
+      "related_docs": [
+        "quote_record",
+        "pricing_decision"
+      ],
+      "borrowed_fields": [
+        "base commercial terms from quote_record"
+      ],
+      "inferred_roles": [
+        "account owner"
+      ]
+    },
+    "actors": [
+      "account owner"
+    ],
+    "action_actors": {
+      "create": [
+        "account owner"
+      ],
+      "submit": [
+        "account owner"
+      ],
+      "review": [
+        "account owner"
+      ],
+      "approve": [
+        "account owner"
+      ],
+      "reject": [
+        "account owner"
+      ],
+      "close": [
+        "account owner"
+      ],
+      "archive": [
+        "account owner"
+      ]
+    }
+  },
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "quote_record",
     "pricing_decision"

@@ -52,7 +52,10 @@
     "field_purposes": {
       "workflow_state": "lifecycle_state",
       "posting_date": "posting_date",
-      "line_status": "status_flag"
+      "line_status": "status_flag",
+      "related_sales_forecast": "relation_collection",
+      "related_forecast_commitment": "relation_collection",
+      "related_opportunity_record": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -103,8 +106,23 @@
     ],
     "downstream_effects": [
       "feeds production planning, demand planning, budgeting, and management reporting"
-    ]
+    ],
+    "action_actors": {
+      "record": [
+        "sales manager"
+      ],
+      "review": [
+        "management reviewer"
+      ],
+      "archive": [
+        "sales manager"
+      ]
+    }
   },
+  "downstream_effects": [
+    "feeds production planning, demand planning, budgeting, and management reporting"
+  ],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "sales_forecast",
     "forecast_commitment",

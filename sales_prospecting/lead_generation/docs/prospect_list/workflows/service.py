@@ -11,7 +11,7 @@ TERMINAL_STATES = ['closed', 'archived']
 ACTION_RULES = {'create': {'allowed_in_states': ['draft', 'active'], 'transitions_to': None}, 'review': {'allowed_in_states': ['draft', 'active'], 'transitions_to': None}, 'activate': {'allowed_in_states': ['draft'], 'transitions_to': 'active'}, 'close': {'allowed_in_states': ['draft', 'active'], 'transitions_to': 'closed'}, 'archive': {'allowed_in_states': ['draft', 'active'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['lead_record', 'outreach_activity'], 'borrowed_fields': ['segment or campaign context from marketing docs'], 'inferred_roles': ['account owner']}, 'actors': ['account owner'], 'action_actors': {'create': ['account owner'], 'review': ['account owner'], 'activate': ['account owner'], 'close': ['account owner'], 'archive': ['account owner']}}
 
 class WorkflowService:
     def allowed_actions_for_state(self, state: str | None) -> list[str]:

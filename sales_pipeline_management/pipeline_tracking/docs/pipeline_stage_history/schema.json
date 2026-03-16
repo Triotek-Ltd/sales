@@ -392,16 +392,18 @@
     {
       "role_id": "System Manager",
       "actions": [
-        "create",
-        "update",
         "view",
         "list",
         "record",
-        "review",
-        "assign",
-        "track",
-        "monitor",
-        "confirm",
+        "archive"
+      ]
+    },
+    {
+      "role_id": "account owner",
+      "actions": [
+        "view",
+        "list",
+        "record",
         "archive"
       ]
     }

@@ -53,7 +53,10 @@
     ],
     "field_purposes": {
       "workflow_state": "lifecycle_state",
-      "owner": "actor_reference"
+      "owner": "actor_reference",
+      "related_contact_record": "relation_collection",
+      "related_account_interaction_log": "relation_collection",
+      "related_renewal_case": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -107,8 +110,26 @@
     ],
     "downstream_effects": [
       "supports collections, service recovery, and revenue growth planning"
-    ]
+    ],
+    "action_actors": {
+      "create": [
+        "account manager"
+      ],
+      "update": [
+        "account manager"
+      ],
+      "review": [
+        "support owner"
+      ],
+      "archive": [
+        "support owner"
+      ]
+    }
   },
+  "downstream_effects": [
+    "supports collections, service recovery, and revenue growth planning"
+  ],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "contact_record",
     "account_interaction_log",

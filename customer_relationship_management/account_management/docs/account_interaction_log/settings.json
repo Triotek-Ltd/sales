@@ -28,7 +28,26 @@
       "show_in_related_panel": true
     }
   ],
-  "lookup_rules": [],
+  "lookup_rules": [
+    {
+      "field_id": "related_customer_account",
+      "doc_id": "customer_account",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_contact_record",
+      "doc_id": "contact_record",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_renewal_case",
+      "doc_id": "renewal_case",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    }
+  ],
   "fetch_rules": [],
   "reference_map": {
     "primary_reference_field": "reference_no",
@@ -36,7 +55,11 @@
   },
   "relation_rules": {
     "parent_doc": null,
-    "child_docs": [],
+    "child_docs": [
+      "customer_account",
+      "contact_record",
+      "renewal_case"
+    ],
     "show_related_panel": true
   },
   "borrowed_fields": [
@@ -60,6 +83,44 @@
   "runtime_hints": {
     "doc_key": "account_interaction_log",
     "supports_related_lookup": true,
-    "supports_fetch_rules": true
+    "supports_fetch_rules": true,
+    "workflow_hints": {
+      "business_objective": "capture account touchpoints, preserve relationship history, and hand off follow-up work to the right owner",
+      "actors": [
+        "account manager",
+        "support representative",
+        "sales manager"
+      ],
+      "start_condition": "an account interaction or follow-up event occurs",
+      "ordered_steps": [
+        "Record the interaction.",
+        "Review the follow-up requirement.",
+        "Archive when the interaction history is no longer active."
+      ],
+      "primary_actions": [
+        "record",
+        "review",
+        "archive"
+      ],
+      "action_actors": {
+        "record": [
+          "account manager",
+          "support representative"
+        ],
+        "review": [
+          "sales manager"
+        ],
+        "archive": [
+          "account manager"
+        ]
+      },
+      "primary_transitions": [
+        "account_interaction_log: active -> archived"
+      ],
+      "downstream_effects": [
+        "supports customer-account follow-up, renewal visibility, and relationship audit history"
+      ]
+    },
+    "action_side_effects_file": "side_effects.json"
   }
 }

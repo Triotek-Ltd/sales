@@ -50,7 +50,9 @@
     ],
     "field_purposes": {
       "workflow_state": "lifecycle_state",
-      "active_status": "status_flag"
+      "active_status": "status_flag",
+      "related_customer_account": "relation_collection",
+      "related_account_interaction_log": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -81,7 +83,39 @@
       "archive": "archived"
     }
   },
-  "workflow_hints": {},
+  "workflow_hints": {
+    "relation_context": {
+      "related_docs": [
+        "customer_account",
+        "account_interaction_log"
+      ],
+      "borrowed_fields": [
+        "account identity from customer_account"
+      ],
+      "inferred_roles": [
+        "account owner"
+      ]
+    },
+    "actors": [
+      "account owner"
+    ],
+    "action_actors": {
+      "create": [
+        "account owner"
+      ],
+      "update": [
+        "account owner"
+      ],
+      "review": [
+        "account owner"
+      ],
+      "archive": [
+        "account owner"
+      ]
+    }
+  },
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "customer_account",
     "account_interaction_log"

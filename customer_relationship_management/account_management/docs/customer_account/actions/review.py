@@ -8,7 +8,7 @@ ACTION_ID = "review"
 ACTION_RULE = {'allowed_in_states': ['active', 'inactive'], 'transitions_to': None}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {'business_objective': 'maintain active customer relationships with a clear history of interactions, satisfaction, and growth plans', 'actors': ['account manager', 'support owner', 'customer-success lead'], 'start_condition': 'a customer relationship must be created or maintained', 'ordered_steps': ['Create or update the customer account.'], 'primary_actions': ['create', 'update', 'review'], 'primary_transitions': ['customer_account: draft -> active'], 'downstream_effects': ['supports collections, service recovery, and revenue growth planning']}
+WORKFLOW_HINTS = {'business_objective': 'maintain active customer relationships with a clear history of interactions, satisfaction, and growth plans', 'actors': ['account manager', 'support owner', 'customer-success lead'], 'start_condition': 'a customer relationship must be created or maintained', 'ordered_steps': ['Create or update the customer account.'], 'primary_actions': ['create', 'update', 'review'], 'primary_transitions': ['customer_account: draft -> active'], 'downstream_effects': ['supports collections, service recovery, and revenue growth planning'], 'action_actors': {'create': ['account manager'], 'update': ['account manager'], 'review': ['support owner'], 'archive': ['support owner']}}
 
 def handle_review(payload: dict, context: dict | None = None) -> dict:
     context = context or {}

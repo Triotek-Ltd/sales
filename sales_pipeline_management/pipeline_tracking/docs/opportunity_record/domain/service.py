@@ -5,9 +5,11 @@ from __future__ import annotations
 
 ARCHETYPE_PROFILE = {'workflow_profile': {'mode': 'transaction_flow', 'supports_submission': True}, 'reporting_profile': {'supports_snapshots': True, 'supports_outputs': True}, 'integration_profile': {'external_sync_enabled': True, 'tracks_external_refs': True}, 'lifecycle_states': ['identified', 'qualified', 'proposal', 'negotiation', 'won', 'lost', 'archived'], 'is_transactional': True}
 
-CONTRACT = {'title_field': 'title', 'status_field': 'workflow_state', 'reference_field': 'reference_no', 'required_fields': ['title', 'workflow_state', 'transaction_date'], 'field_purposes': {'workflow_state': 'lifecycle_state', 'transaction_date': 'transaction_date', 'party': 'primary_party', 'currency': 'currency_code', 'total_amount': 'total_amount', 'account': 'account_reference', 'expected_close_date': 'schedule_marker', 'owner': 'actor_reference'}, 'search_fields': ['title', 'reference_no', 'description', 'opportunity_code', 'account', 'value'], 'list_columns': ['title', 'reference_no', 'transaction_date', 'party', 'total_amount', 'workflow_state'], 'initial_state': 'identified', 'lifecycle_states': ['identified', 'qualified', 'proposal', 'negotiation', 'won', 'lost', 'archived'], 'terminal_states': ['archived'], 'action_targets': {'create': None, 'update': None, 'review': None, 'advance': None, 'win': None, 'lose': None, 'archive': 'archived'}}
+CONTRACT = {'title_field': 'title', 'status_field': 'workflow_state', 'reference_field': 'reference_no', 'required_fields': ['title', 'workflow_state', 'transaction_date'], 'field_purposes': {'workflow_state': 'lifecycle_state', 'transaction_date': 'transaction_date', 'party': 'primary_party', 'currency': 'currency_code', 'total_amount': 'total_amount', 'account': 'account_reference', 'expected_close_date': 'schedule_marker', 'owner': 'actor_reference', 'related_lead_record': 'relation_collection', 'related_quote_record': 'relation_collection', 'related_pipeline_stage_history': 'relation_collection', 'related_forecast_commitment': 'relation_collection'}, 'search_fields': ['title', 'reference_no', 'description', 'opportunity_code', 'account', 'value'], 'list_columns': ['title', 'reference_no', 'transaction_date', 'party', 'total_amount', 'workflow_state'], 'initial_state': 'identified', 'lifecycle_states': ['identified', 'qualified', 'proposal', 'negotiation', 'won', 'lost', 'archived'], 'terminal_states': ['archived'], 'action_targets': {'create': None, 'update': None, 'review': None, 'advance': None, 'win': None, 'lose': None, 'archive': 'archived'}}
 
-WORKFLOW_HINTS = {'business_objective': 'translate historical performance, market signals, and pipeline opportunity data into forecast commitments and management targets', 'actors': ['sales manager', 'sales operations analyst', 'team lead', 'management reviewer'], 'start_condition': 'a new forecast period is opened', 'ordered_steps': ['Collect pipeline, history, and demand inputs.'], 'primary_actions': ['create', 'review', 'commit'], 'primary_transitions': [], 'downstream_effects': ['feeds production planning, demand planning, budgeting, and management reporting']}
+WORKFLOW_HINTS = {'business_objective': 'translate historical performance, market signals, and pipeline opportunity data into forecast commitments and management targets', 'actors': ['sales manager', 'sales operations analyst', 'team lead', 'management reviewer'], 'start_condition': 'a new forecast period is opened', 'ordered_steps': ['Collect pipeline, history, and demand inputs.'], 'primary_actions': ['create', 'review', 'commit'], 'primary_transitions': [], 'downstream_effects': ['feeds production planning, demand planning, budgeting, and management reporting'], 'action_actors': {'create': ['sales manager'], 'update': ['sales manager'], 'review': ['management reviewer'], 'archive': ['sales manager']}}
+
+SIDE_EFFECT_HINTS = {'downstream_effects': ['feeds production planning, demand planning, budgeting, and management reporting'], 'related_docs': ['lead_record', 'quote_record', 'pipeline_stage_history', 'forecast_commitment'], 'action_targets': {'create': None, 'update': None, 'review': None, 'advance': None, 'win': None, 'lose': None, 'archive': 'archived'}, 'action_side_effects_file': 'side_effects.json'}
 
 class DomainService:
     doc_id = "opportunity_record"
@@ -63,12 +65,28 @@ class DomainService:
     def after_update(self, instance, serialized_data: dict, context: dict | None = None) -> dict:
         return serialized_data
 
+    def after_action(
+        self,
+        instance,
+        action_id: str,
+        payload: dict,
+        action_result: dict,
+        context: dict | None = None,
+    ) -> dict:
+        return {
+            "updates": {},
+            "side_effects": [],
+        }
+
     def shape_retrieve_data(self, instance, serialized_data: dict, context: dict | None = None) -> dict:
         serialized_data.setdefault("_business_capabilities", self.business_capabilities())
         return serialized_data
 
     def workflow_objective(self) -> str | None:
         return WORKFLOW_HINTS.get("business_objective")
+
+    def side_effect_hints(self) -> dict:
+        return SIDE_EFFECT_HINTS
 
     def business_capabilities(self) -> dict:
         return {

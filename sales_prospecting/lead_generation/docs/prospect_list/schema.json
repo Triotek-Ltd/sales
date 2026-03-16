@@ -333,6 +333,54 @@
         "filterable": true,
         "sortable": true
       }
+    },
+    {
+      "field_id": "related_lead_record",
+      "label": "Related Lead Record",
+      "type": "Table MultiSelect",
+      "required": false,
+      "read_only": false,
+      "default": null,
+      "unique": false,
+      "options": null,
+      "purpose": "relation_collection",
+      "linked_doc": "lead_record",
+      "depends_on": null,
+      "mandatory_depends_on": null,
+      "read_only_depends_on": null,
+      "fetch_from": null,
+      "allow_on_submit": false,
+      "indexed": false,
+      "ui": {
+        "visible": false,
+        "list_visible": false,
+        "filterable": false,
+        "sortable": false
+      }
+    },
+    {
+      "field_id": "related_outreach_activity",
+      "label": "Related Outreach Activity",
+      "type": "Table MultiSelect",
+      "required": false,
+      "read_only": false,
+      "default": null,
+      "unique": false,
+      "options": null,
+      "purpose": "relation_collection",
+      "linked_doc": "outreach_activity",
+      "depends_on": null,
+      "mandatory_depends_on": null,
+      "read_only_depends_on": null,
+      "fetch_from": null,
+      "allow_on_submit": false,
+      "indexed": false,
+      "ui": {
+        "visible": false,
+        "list_visible": false,
+        "filterable": false,
+        "sortable": false
+      }
     }
   ],
   "field_groups": {
@@ -356,7 +404,10 @@
       "prospect_count",
       "status"
     ],
-    "relations": [],
+    "relations": [
+      "related_lead_record",
+      "related_outreach_activity"
+    ],
     "amounts": [
       "currency",
       "total_amount"
@@ -445,16 +496,24 @@
     {
       "role_id": "System Manager",
       "actions": [
-        "create",
-        "update",
         "view",
         "list",
-        "record",
+        "create",
         "review",
-        "assign",
-        "track",
-        "monitor",
-        "confirm",
+        "activate",
+        "close",
+        "archive"
+      ]
+    },
+    {
+      "role_id": "account owner",
+      "actions": [
+        "view",
+        "list",
+        "create",
+        "review",
+        "activate",
+        "close",
         "archive"
       ]
     }

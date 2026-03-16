@@ -33,7 +33,26 @@
       "show_in_related_panel": true
     }
   ],
-  "lookup_rules": [],
+  "lookup_rules": [
+    {
+      "field_id": "related_contact_record",
+      "doc_id": "contact_record",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_account_interaction_log",
+      "doc_id": "account_interaction_log",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_renewal_case",
+      "doc_id": "renewal_case",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    }
+  ],
   "fetch_rules": [],
   "reference_map": {
     "primary_reference_field": "reference_no",
@@ -41,7 +60,11 @@
   },
   "relation_rules": {
     "parent_doc": null,
-    "child_docs": [],
+    "child_docs": [
+      "contact_record",
+      "account_interaction_log",
+      "renewal_case"
+    ],
     "show_related_panel": true
   },
   "borrowed_fields": [
@@ -84,7 +107,22 @@
       ],
       "downstream_effects": [
         "supports collections, service recovery, and revenue growth planning"
-      ]
-    }
+      ],
+      "action_actors": {
+        "create": [
+          "account manager"
+        ],
+        "update": [
+          "account manager"
+        ],
+        "review": [
+          "support owner"
+        ],
+        "archive": [
+          "support owner"
+        ]
+      }
+    },
+    "action_side_effects_file": "side_effects.json"
   }
 }

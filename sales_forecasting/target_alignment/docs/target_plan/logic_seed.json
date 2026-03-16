@@ -53,7 +53,9 @@
     ],
     "field_purposes": {
       "workflow_state": "lifecycle_state",
-      "quota_amount": "monetary_value"
+      "quota_amount": "monetary_value",
+      "related_sales_forecast": "relation_collection",
+      "related_forecast_review": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -107,8 +109,29 @@
     "primary_transitions": [],
     "downstream_effects": [
       "feeds production planning, demand planning, budgeting, and management reporting"
-    ]
+    ],
+    "action_actors": {
+      "create": [
+        "sales manager"
+      ],
+      "update": [
+        "sales manager"
+      ],
+      "review": [
+        "management reviewer"
+      ],
+      "approve": [
+        "sales manager"
+      ],
+      "archive": [
+        "sales manager"
+      ]
+    }
   },
+  "downstream_effects": [
+    "feeds production planning, demand planning, budgeting, and management reporting"
+  ],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "sales_forecast",
     "forecast_review"

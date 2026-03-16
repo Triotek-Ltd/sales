@@ -5,9 +5,11 @@ from __future__ import annotations
 
 ARCHETYPE_PROFILE = {'workflow_profile': {'mode': 'event_schedule', 'supports_timing': True}, 'reporting_profile': {'supports_snapshots': True, 'supports_outputs': False}, 'integration_profile': {'external_sync_enabled': False}, 'lifecycle_states': ['planned', 'scheduled', 'completed', 'closed', 'archived'], 'is_transactional': False}
 
-CONTRACT = {'title_field': 'title', 'status_field': 'workflow_state', 'reference_field': 'reference_no', 'required_fields': ['title', 'workflow_state'], 'field_purposes': {'workflow_state': 'lifecycle_state', 'start_at': 'event_start', 'end_at': 'event_end', 'review_date': 'schedule_marker'}, 'search_fields': ['title', 'reference_no', 'description', 'review_code', 'review_date', 'scope'], 'list_columns': ['title', 'start_at', 'end_at', 'workflow_state'], 'initial_state': 'planned', 'lifecycle_states': ['planned', 'scheduled', 'completed', 'closed', 'archived'], 'terminal_states': ['closed', 'archived'], 'action_targets': {'create': None, 'schedule': None, 'complete': None, 'close': 'closed', 'archive': 'archived'}}
+CONTRACT = {'title_field': 'title', 'status_field': 'workflow_state', 'reference_field': 'reference_no', 'required_fields': ['title', 'workflow_state'], 'field_purposes': {'workflow_state': 'lifecycle_state', 'start_at': 'event_start', 'end_at': 'event_end', 'review_date': 'schedule_marker', 'related_sales_forecast': 'relation_collection', 'related_target_plan': 'relation_collection', 'related_forecast_commitment': 'relation_collection'}, 'search_fields': ['title', 'reference_no', 'description', 'review_code', 'review_date', 'scope'], 'list_columns': ['title', 'start_at', 'end_at', 'workflow_state'], 'initial_state': 'planned', 'lifecycle_states': ['planned', 'scheduled', 'completed', 'closed', 'archived'], 'terminal_states': ['closed', 'archived'], 'action_targets': {'create': None, 'schedule': None, 'complete': None, 'close': 'closed', 'archive': 'archived'}}
 
-WORKFLOW_HINTS = {'business_objective': 'translate historical performance, market signals, and pipeline opportunity data into forecast commitments and management targets', 'actors': ['sales manager', 'sales operations analyst', 'team lead', 'management reviewer'], 'start_condition': 'a new forecast period is opened', 'ordered_steps': ['Review the forecast against targets and risk.'], 'primary_actions': ['create', 'schedule', 'complete', 'close'], 'primary_transitions': ['forecast_review: planned -> scheduled -> completed -> closed'], 'downstream_effects': ['feeds production planning, demand planning, budgeting, and management reporting']}
+WORKFLOW_HINTS = {'business_objective': 'translate historical performance, market signals, and pipeline opportunity data into forecast commitments and management targets', 'actors': ['sales manager', 'sales operations analyst', 'team lead', 'management reviewer'], 'start_condition': 'a new forecast period is opened', 'ordered_steps': ['Review the forecast against targets and risk.'], 'primary_actions': ['create', 'schedule', 'complete', 'close'], 'primary_transitions': ['forecast_review: planned -> scheduled -> completed -> closed'], 'downstream_effects': ['feeds production planning, demand planning, budgeting, and management reporting'], 'action_actors': {'create': ['sales manager'], 'close': ['sales manager'], 'archive': ['sales manager']}}
+
+SIDE_EFFECT_HINTS = {'downstream_effects': ['feeds production planning, demand planning, budgeting, and management reporting'], 'related_docs': ['sales_forecast', 'target_plan', 'forecast_commitment'], 'action_targets': {'create': None, 'schedule': None, 'complete': None, 'close': 'closed', 'archive': 'archived'}, 'action_side_effects_file': 'side_effects.json'}
 
 class DomainService:
     doc_id = "forecast_review"
@@ -63,12 +65,28 @@ class DomainService:
     def after_update(self, instance, serialized_data: dict, context: dict | None = None) -> dict:
         return serialized_data
 
+    def after_action(
+        self,
+        instance,
+        action_id: str,
+        payload: dict,
+        action_result: dict,
+        context: dict | None = None,
+    ) -> dict:
+        return {
+            "updates": {},
+            "side_effects": [],
+        }
+
     def shape_retrieve_data(self, instance, serialized_data: dict, context: dict | None = None) -> dict:
         serialized_data.setdefault("_business_capabilities", self.business_capabilities())
         return serialized_data
 
     def workflow_objective(self) -> str | None:
         return WORKFLOW_HINTS.get("business_objective")
+
+    def side_effect_hints(self) -> dict:
+        return SIDE_EFFECT_HINTS
 
     def business_capabilities(self) -> dict:
         return {

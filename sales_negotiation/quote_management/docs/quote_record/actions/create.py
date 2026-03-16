@@ -8,7 +8,7 @@ ACTION_ID = "create"
 ACTION_RULE = {'allowed_in_states': ['draft', 'submitted', 'approved', 'accepted', 'expired', 'cancelled'], 'transitions_to': None}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {'business_objective': 'manage proposal revisions, negotiation decisions, and final agreement closure with a prospect', 'actors': ['sales rep', 'approver', 'customer negotiator'], 'start_condition': 'a proposal is presented to a prospect', 'ordered_steps': ['Issue the sales proposal and opening quote.', 'Revise quote and commercial terms as needed.'], 'primary_actions': ['create', 'review', 'issue', 'update', 'approve'], 'primary_transitions': ['quote_record: draft -> active', 'quote_record: active -> revised -> approved'], 'downstream_effects': ['feeds order capture, billing, and relationship management']}
+WORKFLOW_HINTS = {'business_objective': 'manage proposal revisions, negotiation decisions, and final agreement closure with a prospect', 'actors': ['sales rep', 'approver', 'customer negotiator'], 'start_condition': 'a proposal is presented to a prospect', 'ordered_steps': ['Issue the sales proposal and opening quote.', 'Revise quote and commercial terms as needed.'], 'primary_actions': ['create', 'review', 'issue', 'update', 'approve'], 'primary_transitions': ['quote_record: draft -> active', 'quote_record: active -> revised -> approved'], 'downstream_effects': ['feeds order capture, billing, and relationship management'], 'action_actors': {'create': ['sales rep'], 'review': ['approver'], 'approve': ['approver'], 'issue': ['sales rep'], 'cancel': ['sales rep'], 'archive': ['sales rep']}}
 
 def handle_create(payload: dict, context: dict | None = None) -> dict:
     context = context or {}

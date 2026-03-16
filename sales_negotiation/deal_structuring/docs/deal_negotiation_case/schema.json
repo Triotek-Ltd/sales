@@ -263,6 +263,78 @@
         "filterable": true,
         "sortable": true
       }
+    },
+    {
+      "field_id": "related_quote_record",
+      "label": "Related Quote Record",
+      "type": "Table MultiSelect",
+      "required": false,
+      "read_only": false,
+      "default": null,
+      "unique": false,
+      "options": null,
+      "purpose": "relation_collection",
+      "linked_doc": "quote_record",
+      "depends_on": null,
+      "mandatory_depends_on": null,
+      "read_only_depends_on": null,
+      "fetch_from": null,
+      "allow_on_submit": false,
+      "indexed": false,
+      "ui": {
+        "visible": false,
+        "list_visible": false,
+        "filterable": false,
+        "sortable": false
+      }
+    },
+    {
+      "field_id": "related_opportunity_record",
+      "label": "Related Opportunity Record",
+      "type": "Table MultiSelect",
+      "required": false,
+      "read_only": false,
+      "default": null,
+      "unique": false,
+      "options": null,
+      "purpose": "relation_collection",
+      "linked_doc": "opportunity_record",
+      "depends_on": null,
+      "mandatory_depends_on": null,
+      "read_only_depends_on": null,
+      "fetch_from": null,
+      "allow_on_submit": false,
+      "indexed": false,
+      "ui": {
+        "visible": false,
+        "list_visible": false,
+        "filterable": false,
+        "sortable": false
+      }
+    },
+    {
+      "field_id": "related_pricing_exception_request",
+      "label": "Related Pricing Exception Request",
+      "type": "Table MultiSelect",
+      "required": false,
+      "read_only": false,
+      "default": null,
+      "unique": false,
+      "options": null,
+      "purpose": "relation_collection",
+      "linked_doc": "pricing_exception_request",
+      "depends_on": null,
+      "mandatory_depends_on": null,
+      "read_only_depends_on": null,
+      "fetch_from": null,
+      "allow_on_submit": false,
+      "indexed": false,
+      "ui": {
+        "visible": false,
+        "list_visible": false,
+        "filterable": false,
+        "sortable": false
+      }
     }
   ],
   "field_groups": {
@@ -287,7 +359,11 @@
       "decision_owner",
       "outcome"
     ],
-    "relations": [],
+    "relations": [
+      "related_quote_record",
+      "related_opportunity_record",
+      "related_pricing_exception_request"
+    ],
     "amounts": [],
     "dates": [],
     "parties": [],
@@ -409,17 +485,35 @@
     {
       "role_id": "System Manager",
       "actions": [
-        "create",
-        "update",
         "view",
         "list",
-        "record",
-        "review",
+        "create",
         "assign",
-        "track",
-        "monitor",
-        "confirm",
+        "review",
+        "counter",
+        "agree",
+        "lose",
+        "close",
         "archive"
+      ]
+    },
+    {
+      "role_id": "account owner",
+      "actions": [
+        "view",
+        "list",
+        "create",
+        "assign",
+        "close",
+        "archive"
+      ]
+    },
+    {
+      "role_id": "case owner",
+      "actions": [
+        "view",
+        "list",
+        "review"
       ]
     }
   ],

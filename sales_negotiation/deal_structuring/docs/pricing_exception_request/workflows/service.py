@@ -11,7 +11,7 @@ TERMINAL_STATES = ['closed', 'archived']
 ACTION_RULES = {'create': {'allowed_in_states': ['draft', 'submitted', 'approved', 'rejected'], 'transitions_to': None}, 'submit': {'allowed_in_states': ['draft', 'submitted', 'approved', 'rejected'], 'transitions_to': 'submitted'}, 'review': {'allowed_in_states': ['draft', 'submitted', 'approved', 'rejected'], 'transitions_to': None}, 'approve': {'allowed_in_states': ['draft', 'submitted', 'approved', 'rejected'], 'transitions_to': 'approved'}, 'reject': {'allowed_in_states': ['draft', 'submitted', 'approved', 'rejected'], 'transitions_to': 'rejected'}, 'close': {'allowed_in_states': ['draft', 'submitted', 'approved', 'rejected'], 'transitions_to': 'closed'}, 'archive': {'allowed_in_states': ['draft', 'submitted', 'approved', 'rejected'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['quote_record', 'pricing_decision'], 'borrowed_fields': ['base commercial terms from quote_record'], 'inferred_roles': ['account owner']}, 'actors': ['account owner'], 'action_actors': {'create': ['account owner'], 'submit': ['account owner'], 'review': ['account owner'], 'approve': ['account owner'], 'reject': ['account owner'], 'close': ['account owner'], 'archive': ['account owner']}}
 
 class WorkflowService:
     def allowed_actions_for_state(self, state: str | None) -> list[str]:

@@ -8,7 +8,7 @@ ACTION_ID = "archive"
 ACTION_RULE = {'allowed_in_states': ['active'], 'transitions_to': 'archived'}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {'business_objective': 'translate historical performance, market signals, and pipeline opportunity data into forecast commitments and management targets', 'actors': ['sales manager', 'sales operations analyst', 'team lead', 'management reviewer'], 'start_condition': 'a new forecast period is opened', 'ordered_steps': ['Generate or record forecast lines.'], 'primary_actions': ['create', 'review'], 'primary_transitions': ['forecast_line: active'], 'downstream_effects': ['feeds production planning, demand planning, budgeting, and management reporting']}
+WORKFLOW_HINTS = {'business_objective': 'translate historical performance, market signals, and pipeline opportunity data into forecast commitments and management targets', 'actors': ['sales manager', 'sales operations analyst', 'team lead', 'management reviewer'], 'start_condition': 'a new forecast period is opened', 'ordered_steps': ['Generate or record forecast lines.'], 'primary_actions': ['create', 'review'], 'primary_transitions': ['forecast_line: active'], 'downstream_effects': ['feeds production planning, demand planning, budgeting, and management reporting'], 'action_actors': {'record': ['sales manager'], 'review': ['management reviewer'], 'archive': ['sales manager']}}
 
 def handle_archive(payload: dict, context: dict | None = None) -> dict:
     context = context or {}

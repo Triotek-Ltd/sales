@@ -80,7 +80,32 @@
       "archive": "archived"
     }
   },
-  "workflow_hints": {},
+  "workflow_hints": {
+    "relation_context": {
+      "related_docs": [
+        "opportunity_record"
+      ],
+      "borrowed_fields": [
+        "current opportunity identity from opportunity_record"
+      ],
+      "inferred_roles": [
+        "account owner"
+      ]
+    },
+    "actors": [
+      "account owner"
+    ],
+    "action_actors": {
+      "record": [
+        "account owner"
+      ],
+      "archive": [
+        "account owner"
+      ]
+    }
+  },
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "opportunity_record"
   ],

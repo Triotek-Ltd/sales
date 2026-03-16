@@ -8,7 +8,7 @@ ACTION_ID = "review"
 ACTION_RULE = {'allowed_in_states': ['open', 'in_review', 'qualified', 'disqualified'], 'transitions_to': 'in_review'}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {'business_objective': 'turn raw prospects into qualified leads with documented outreach and qualification evidence', 'actors': ['sales rep', 'sales manager', 'reviewer'], 'start_condition': 'a target customer or lead source is identified', 'ordered_steps': ['Open and progress the qualification case.'], 'primary_actions': ['create', 'assign', 'qualify', 'disqualify', 'close'], 'primary_transitions': ['qualification_case: opened -> in_review -> qualified or disqualified -> closed'], 'downstream_effects': ['feeds opportunity, negotiation, and forecast workflows']}
+WORKFLOW_HINTS = {'business_objective': 'turn raw prospects into qualified leads with documented outreach and qualification evidence', 'actors': ['sales rep', 'sales manager', 'reviewer'], 'start_condition': 'a target customer or lead source is identified', 'ordered_steps': ['Open and progress the qualification case.'], 'primary_actions': ['create', 'assign', 'qualify', 'disqualify', 'close'], 'primary_transitions': ['qualification_case: opened -> in_review -> qualified or disqualified -> closed'], 'downstream_effects': ['feeds opportunity, negotiation, and forecast workflows'], 'action_actors': {'create': ['sales rep'], 'assign': ['sales rep'], 'review': ['reviewer'], 'close': ['sales manager'], 'archive': ['sales manager']}}
 
 def handle_review(payload: dict, context: dict | None = None) -> dict:
     context = context or {}

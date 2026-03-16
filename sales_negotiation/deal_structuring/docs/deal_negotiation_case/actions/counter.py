@@ -8,7 +8,7 @@ ACTION_ID = "counter"
 ACTION_RULE = {'allowed_in_states': ['open', 'negotiating', 'agreed', 'lost'], 'transitions_to': None}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['quote_record', 'opportunity_record', 'pricing_exception_request'], 'borrowed_fields': ['commercial terms from quote_record', 'deal value from opportunity_record'], 'inferred_roles': ['account owner', 'case owner']}, 'actors': ['account owner', 'case owner'], 'action_actors': {'create': ['account owner'], 'assign': ['account owner'], 'review': ['case owner'], 'close': ['account owner'], 'archive': ['account owner']}}
 
 def handle_counter(payload: dict, context: dict | None = None) -> dict:
     context = context or {}

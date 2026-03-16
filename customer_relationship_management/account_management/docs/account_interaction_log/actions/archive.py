@@ -8,7 +8,7 @@ ACTION_ID = "archive"
 ACTION_RULE = {'allowed_in_states': ['active'], 'transitions_to': 'archived'}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'business_objective': 'capture account touchpoints, preserve relationship history, and hand off follow-up work to the right owner', 'actors': ['account manager', 'support representative', 'sales manager'], 'start_condition': 'an account interaction or follow-up event occurs', 'ordered_steps': ['Record the interaction.', 'Review the follow-up requirement.', 'Archive when the interaction history is no longer active.'], 'primary_actions': ['record', 'review', 'archive'], 'action_actors': {'record': ['account manager', 'support representative'], 'review': ['sales manager'], 'archive': ['account manager']}, 'primary_transitions': ['account_interaction_log: active -> archived'], 'downstream_effects': ['supports customer-account follow-up, renewal visibility, and relationship audit history']}
 
 def handle_archive(payload: dict, context: dict | None = None) -> dict:
     context = context or {}

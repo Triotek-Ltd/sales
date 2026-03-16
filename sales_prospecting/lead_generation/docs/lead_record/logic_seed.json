@@ -58,7 +58,11 @@
     ],
     "field_purposes": {
       "workflow_state": "lifecycle_state",
-      "owner": "actor_reference"
+      "owner": "actor_reference",
+      "related_prospect_list": "relation_collection",
+      "related_outreach_activity": "relation_collection",
+      "related_qualification_case": "relation_collection",
+      "related_opportunity_record": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -118,8 +122,26 @@
     ],
     "downstream_effects": [
       "feeds opportunity, negotiation, and forecast workflows"
-    ]
+    ],
+    "action_actors": {
+      "create": [
+        "sales rep"
+      ],
+      "update": [
+        "sales rep"
+      ],
+      "assign": [
+        "sales rep"
+      ],
+      "archive": [
+        "sales manager"
+      ]
+    }
   },
+  "downstream_effects": [
+    "feeds opportunity, negotiation, and forecast workflows"
+  ],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "prospect_list",
     "outreach_activity",

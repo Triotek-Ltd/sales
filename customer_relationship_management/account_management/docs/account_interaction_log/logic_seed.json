@@ -52,7 +52,10 @@
     "field_purposes": {
       "workflow_state": "lifecycle_state",
       "posting_date": "posting_date",
-      "interaction_date": "schedule_marker"
+      "interaction_date": "schedule_marker",
+      "related_customer_account": "relation_collection",
+      "related_contact_record": "relation_collection",
+      "related_renewal_case": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -82,7 +85,47 @@
       "archive": "archived"
     }
   },
-  "workflow_hints": {},
+  "workflow_hints": {
+    "business_objective": "capture account touchpoints, preserve relationship history, and hand off follow-up work to the right owner",
+    "actors": [
+      "account manager",
+      "support representative",
+      "sales manager"
+    ],
+    "start_condition": "an account interaction or follow-up event occurs",
+    "ordered_steps": [
+      "Record the interaction.",
+      "Review the follow-up requirement.",
+      "Archive when the interaction history is no longer active."
+    ],
+    "primary_actions": [
+      "record",
+      "review",
+      "archive"
+    ],
+    "action_actors": {
+      "record": [
+        "account manager",
+        "support representative"
+      ],
+      "review": [
+        "sales manager"
+      ],
+      "archive": [
+        "account manager"
+      ]
+    },
+    "primary_transitions": [
+      "account_interaction_log: active -> archived"
+    ],
+    "downstream_effects": [
+      "supports customer-account follow-up, renewal visibility, and relationship audit history"
+    ]
+  },
+  "downstream_effects": [
+    "supports customer-account follow-up, renewal visibility, and relationship audit history"
+  ],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "customer_account",
     "contact_record",

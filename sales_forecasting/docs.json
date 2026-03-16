@@ -1,8 +1,8 @@
 {
   "docs": [
     "forecast_line",
-    "sales_forecast",
     "forecast_review",
+    "sales_forecast",
     "target_plan"
   ]
 }

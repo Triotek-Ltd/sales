@@ -62,7 +62,9 @@
       "party": "primary_party",
       "currency": "currency_code",
       "total_amount": "total_amount",
-      "owner": "actor_reference"
+      "owner": "actor_reference",
+      "related_lead_record": "relation_collection",
+      "related_outreach_activity": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -99,7 +101,42 @@
       "archive": "archived"
     }
   },
-  "workflow_hints": {},
+  "workflow_hints": {
+    "relation_context": {
+      "related_docs": [
+        "lead_record",
+        "outreach_activity"
+      ],
+      "borrowed_fields": [
+        "segment or campaign context from marketing docs"
+      ],
+      "inferred_roles": [
+        "account owner"
+      ]
+    },
+    "actors": [
+      "account owner"
+    ],
+    "action_actors": {
+      "create": [
+        "account owner"
+      ],
+      "review": [
+        "account owner"
+      ],
+      "activate": [
+        "account owner"
+      ],
+      "close": [
+        "account owner"
+      ],
+      "archive": [
+        "account owner"
+      ]
+    }
+  },
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "lead_record",
     "outreach_activity"

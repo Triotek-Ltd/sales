@@ -23,7 +23,14 @@
       "show_in_related_panel": true
     }
   ],
-  "lookup_rules": [],
+  "lookup_rules": [
+    {
+      "field_id": "related_quote_record",
+      "doc_id": "quote_record",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    }
+  ],
   "fetch_rules": [],
   "reference_map": {
     "primary_reference_field": "reference_no",
@@ -31,7 +38,9 @@
   },
   "relation_rules": {
     "parent_doc": null,
-    "child_docs": [],
+    "child_docs": [
+      "quote_record"
+    ],
     "show_related_panel": true
   },
   "borrowed_fields": [
@@ -52,6 +61,47 @@
   "runtime_hints": {
     "doc_key": "pricing_exception_request",
     "supports_related_lookup": true,
-    "supports_fetch_rules": true
+    "supports_fetch_rules": true,
+    "workflow_hints": {
+      "relation_context": {
+        "related_docs": [
+          "quote_record",
+          "pricing_decision"
+        ],
+        "borrowed_fields": [
+          "base commercial terms from quote_record"
+        ],
+        "inferred_roles": [
+          "account owner"
+        ]
+      },
+      "actors": [
+        "account owner"
+      ],
+      "action_actors": {
+        "create": [
+          "account owner"
+        ],
+        "submit": [
+          "account owner"
+        ],
+        "review": [
+          "account owner"
+        ],
+        "approve": [
+          "account owner"
+        ],
+        "reject": [
+          "account owner"
+        ],
+        "close": [
+          "account owner"
+        ],
+        "archive": [
+          "account owner"
+        ]
+      }
+    },
+    "action_side_effects_file": "side_effects.json"
   }
 }

@@ -59,7 +59,11 @@
         "review_outcome",
         "closure_state"
       ],
-      "relations": [],
+      "relations": [
+        "related_sales_forecast",
+        "related_target_plan",
+        "related_forecast_commitment"
+      ],
       "amounts": [],
       "dates": [
         "start_at",
@@ -367,6 +371,78 @@
           "filterable": true,
           "sortable": true
         }
+      },
+      {
+        "field_id": "related_sales_forecast",
+        "label": "Related Sales Forecast",
+        "type": "Table MultiSelect",
+        "required": false,
+        "read_only": false,
+        "default": null,
+        "unique": false,
+        "options": null,
+        "purpose": "relation_collection",
+        "linked_doc": "sales_forecast",
+        "depends_on": null,
+        "mandatory_depends_on": null,
+        "read_only_depends_on": null,
+        "fetch_from": null,
+        "allow_on_submit": false,
+        "indexed": false,
+        "ui": {
+          "visible": false,
+          "list_visible": false,
+          "filterable": false,
+          "sortable": false
+        }
+      },
+      {
+        "field_id": "related_target_plan",
+        "label": "Related Target Plan",
+        "type": "Table MultiSelect",
+        "required": false,
+        "read_only": false,
+        "default": null,
+        "unique": false,
+        "options": null,
+        "purpose": "relation_collection",
+        "linked_doc": "target_plan",
+        "depends_on": null,
+        "mandatory_depends_on": null,
+        "read_only_depends_on": null,
+        "fetch_from": null,
+        "allow_on_submit": false,
+        "indexed": false,
+        "ui": {
+          "visible": false,
+          "list_visible": false,
+          "filterable": false,
+          "sortable": false
+        }
+      },
+      {
+        "field_id": "related_forecast_commitment",
+        "label": "Related Forecast Commitment",
+        "type": "Table MultiSelect",
+        "required": false,
+        "read_only": false,
+        "default": null,
+        "unique": false,
+        "options": null,
+        "purpose": "relation_collection",
+        "linked_doc": "forecast_commitment",
+        "depends_on": null,
+        "mandatory_depends_on": null,
+        "read_only_depends_on": null,
+        "fetch_from": null,
+        "allow_on_submit": false,
+        "indexed": false,
+        "ui": {
+          "visible": false,
+          "list_visible": false,
+          "filterable": false,
+          "sortable": false
+        }
       }
     ],
     "title_field": "title",
@@ -457,17 +533,44 @@
       {
         "role_id": "System Manager",
         "actions": [
-          "create",
-          "update",
           "view",
           "list",
-          "record",
-          "review",
-          "assign",
-          "track",
-          "monitor",
-          "confirm",
+          "create",
+          "schedule",
+          "complete",
+          "close",
           "archive"
+        ]
+      },
+      {
+        "role_id": "sales manager",
+        "actions": [
+          "view",
+          "list",
+          "create",
+          "close",
+          "archive"
+        ]
+      },
+      {
+        "role_id": "sales operations analyst",
+        "actions": [
+          "view",
+          "list"
+        ]
+      },
+      {
+        "role_id": "team lead",
+        "actions": [
+          "view",
+          "list"
+        ]
+      },
+      {
+        "role_id": "management reviewer",
+        "actions": [
+          "view",
+          "list"
         ]
       }
     ],
@@ -545,7 +648,26 @@
         "show_in_related_panel": true
       }
     ],
-    "lookup_rules": [],
+    "lookup_rules": [
+      {
+        "field_id": "related_sales_forecast",
+        "doc_id": "sales_forecast",
+        "lookup_mode": "multiple",
+        "purpose": "relation_collection"
+      },
+      {
+        "field_id": "related_target_plan",
+        "doc_id": "target_plan",
+        "lookup_mode": "multiple",
+        "purpose": "relation_collection"
+      },
+      {
+        "field_id": "related_forecast_commitment",
+        "doc_id": "forecast_commitment",
+        "lookup_mode": "multiple",
+        "purpose": "relation_collection"
+      }
+    ],
     "fetch_rules": [],
     "reference_map": {
       "primary_reference_field": "reference_no",
@@ -553,7 +675,11 @@
     },
     "relation_rules": {
       "parent_doc": null,
-      "child_docs": [],
+      "child_docs": [
+        "sales_forecast",
+        "target_plan",
+        "forecast_commitment"
+      ],
       "show_related_panel": true
     },
     "borrowed_fields": [
@@ -601,8 +727,20 @@
         ],
         "downstream_effects": [
           "feeds production planning, demand planning, budgeting, and management reporting"
-        ]
-      }
+        ],
+        "action_actors": {
+          "create": [
+            "sales manager"
+          ],
+          "close": [
+            "sales manager"
+          ],
+          "archive": [
+            "sales manager"
+          ]
+        }
+      },
+      "action_side_effects_file": "side_effects.json"
     }
   },
   "classification": {
@@ -678,6 +816,9 @@
       "reports": "reports/service.py",
       "integrations": "integrations/service.py"
     },
+    "runtime_contract": {
+      "side_effects_file": "side_effects.json"
+    },
     "action_handlers": {
       "base_dir": "actions",
       "registry": "actions/registry.py",
@@ -695,6 +836,39 @@
       "doc_kind": "event"
     }
   },
+  "testing": {
+    "seeded": true,
+    "api_base_path": "/apis/sales/sales_forecasting/target_alignment/forecast_review/",
+    "status_field": "workflow_state",
+    "initial_state": "planned",
+    "required_fields": [
+      "title",
+      "workflow_state"
+    ],
+    "transition_scenarios": [
+      {
+        "action_id": "close",
+        "source_state": "planned",
+        "target_state": "closed",
+        "disallowed_state": "closed"
+      },
+      {
+        "action_id": "archive",
+        "source_state": "planned",
+        "target_state": "archived",
+        "disallowed_state": "closed"
+      }
+    ],
+    "related_docs": [
+      "sales_forecast",
+      "target_plan",
+      "forecast_commitment"
+    ],
+    "downstream_effects": [
+      "feeds production planning, demand planning, budgeting, and management reporting"
+    ],
+    "action_side_effects_file": "side_effects.json"
+  },
   "runtime": {
     "source_of_truth": "doc_folder",
     "generated_from": [
@@ -702,7 +876,8 @@
       "schema.json",
       "actions.json",
       "settings.json",
-      "logic_seed.json"
+      "logic_seed.json",
+      "side_effects.json"
     ],
     "generator": "plug.apps.doc.file_handler"
   }

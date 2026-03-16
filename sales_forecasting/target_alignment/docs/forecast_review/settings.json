@@ -28,7 +28,26 @@
       "show_in_related_panel": true
     }
   ],
-  "lookup_rules": [],
+  "lookup_rules": [
+    {
+      "field_id": "related_sales_forecast",
+      "doc_id": "sales_forecast",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_target_plan",
+      "doc_id": "target_plan",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_forecast_commitment",
+      "doc_id": "forecast_commitment",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    }
+  ],
   "fetch_rules": [],
   "reference_map": {
     "primary_reference_field": "reference_no",
@@ -36,7 +55,11 @@
   },
   "relation_rules": {
     "parent_doc": null,
-    "child_docs": [],
+    "child_docs": [
+      "sales_forecast",
+      "target_plan",
+      "forecast_commitment"
+    ],
     "show_related_panel": true
   },
   "borrowed_fields": [
@@ -84,7 +107,19 @@
       ],
       "downstream_effects": [
         "feeds production planning, demand planning, budgeting, and management reporting"
-      ]
-    }
+      ],
+      "action_actors": {
+        "create": [
+          "sales manager"
+        ],
+        "close": [
+          "sales manager"
+        ],
+        "archive": [
+          "sales manager"
+        ]
+      }
+    },
+    "action_side_effects_file": "side_effects.json"
   }
 }

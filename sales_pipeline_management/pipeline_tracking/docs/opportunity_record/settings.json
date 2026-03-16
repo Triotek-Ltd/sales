@@ -35,7 +35,32 @@
       "show_in_related_panel": true
     }
   ],
-  "lookup_rules": [],
+  "lookup_rules": [
+    {
+      "field_id": "related_lead_record",
+      "doc_id": "lead_record",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_quote_record",
+      "doc_id": "quote_record",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_pipeline_stage_history",
+      "doc_id": "pipeline_stage_history",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_forecast_commitment",
+      "doc_id": "forecast_commitment",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    }
+  ],
   "fetch_rules": [],
   "reference_map": {
     "primary_reference_field": "reference_no",
@@ -43,7 +68,12 @@
   },
   "relation_rules": {
     "parent_doc": null,
-    "child_docs": [],
+    "child_docs": [
+      "lead_record",
+      "quote_record",
+      "pipeline_stage_history",
+      "forecast_commitment"
+    ],
     "show_related_panel": true
   },
   "borrowed_fields": [
@@ -85,7 +115,22 @@
       "primary_transitions": [],
       "downstream_effects": [
         "feeds production planning, demand planning, budgeting, and management reporting"
-      ]
-    }
+      ],
+      "action_actors": {
+        "create": [
+          "sales manager"
+        ],
+        "update": [
+          "sales manager"
+        ],
+        "review": [
+          "management reviewer"
+        ],
+        "archive": [
+          "sales manager"
+        ]
+      }
+    },
+    "action_side_effects_file": "side_effects.json"
   }
 }

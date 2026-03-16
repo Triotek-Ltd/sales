@@ -8,7 +8,7 @@ ACTION_ID = "win"
 ACTION_RULE = {'allowed_in_states': ['identified', 'qualified', 'proposal', 'negotiation', 'won', 'lost'], 'transitions_to': None}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {'business_objective': 'translate historical performance, market signals, and pipeline opportunity data into forecast commitments and management targets', 'actors': ['sales manager', 'sales operations analyst', 'team lead', 'management reviewer'], 'start_condition': 'a new forecast period is opened', 'ordered_steps': ['Collect pipeline, history, and demand inputs.'], 'primary_actions': ['create', 'review', 'commit'], 'primary_transitions': [], 'downstream_effects': ['feeds production planning, demand planning, budgeting, and management reporting']}
+WORKFLOW_HINTS = {'business_objective': 'translate historical performance, market signals, and pipeline opportunity data into forecast commitments and management targets', 'actors': ['sales manager', 'sales operations analyst', 'team lead', 'management reviewer'], 'start_condition': 'a new forecast period is opened', 'ordered_steps': ['Collect pipeline, history, and demand inputs.'], 'primary_actions': ['create', 'review', 'commit'], 'primary_transitions': [], 'downstream_effects': ['feeds production planning, demand planning, budgeting, and management reporting'], 'action_actors': {'create': ['sales manager'], 'update': ['sales manager'], 'review': ['management reviewer'], 'archive': ['sales manager']}}
 
 def handle_win(payload: dict, context: dict | None = None) -> dict:
     context = context or {}

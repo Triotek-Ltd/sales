@@ -63,7 +63,10 @@
       "party": "primary_party",
       "currency": "currency_code",
       "total_amount": "total_amount",
-      "committed_amount": "monetary_value"
+      "committed_amount": "monetary_value",
+      "related_opportunity_record": "relation_collection",
+      "related_sales_forecast": "relation_collection",
+      "related_forecast_line": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -122,8 +125,23 @@
     ],
     "downstream_effects": [
       "feeds production planning, demand planning, budgeting, and management reporting"
-    ]
+    ],
+    "action_actors": {
+      "create": [
+        "sales manager"
+      ],
+      "review": [
+        "management reviewer"
+      ],
+      "archive": [
+        "sales manager"
+      ]
+    }
   },
+  "downstream_effects": [
+    "feeds production planning, demand planning, budgeting, and management reporting"
+  ],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "opportunity_record",
     "sales_forecast",

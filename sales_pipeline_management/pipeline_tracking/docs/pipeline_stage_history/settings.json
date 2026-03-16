@@ -47,6 +47,31 @@
   "runtime_hints": {
     "doc_key": "pipeline_stage_history",
     "supports_related_lookup": true,
-    "supports_fetch_rules": true
+    "supports_fetch_rules": true,
+    "workflow_hints": {
+      "relation_context": {
+        "related_docs": [
+          "opportunity_record"
+        ],
+        "borrowed_fields": [
+          "current opportunity identity from opportunity_record"
+        ],
+        "inferred_roles": [
+          "account owner"
+        ]
+      },
+      "actors": [
+        "account owner"
+      ],
+      "action_actors": {
+        "record": [
+          "account owner"
+        ],
+        "archive": [
+          "account owner"
+        ]
+      }
+    },
+    "action_side_effects_file": "side_effects.json"
   }
 }

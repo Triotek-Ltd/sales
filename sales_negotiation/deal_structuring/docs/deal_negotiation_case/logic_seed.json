@@ -63,7 +63,10 @@
       "workflow_state"
     ],
     "field_purposes": {
-      "workflow_state": "lifecycle_state"
+      "workflow_state": "lifecycle_state",
+      "related_quote_record": "relation_collection",
+      "related_opportunity_record": "relation_collection",
+      "related_pricing_exception_request": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -103,7 +106,46 @@
       "archive": "archived"
     }
   },
-  "workflow_hints": {},
+  "workflow_hints": {
+    "relation_context": {
+      "related_docs": [
+        "quote_record",
+        "opportunity_record",
+        "pricing_exception_request"
+      ],
+      "borrowed_fields": [
+        "commercial terms from quote_record",
+        "deal value from opportunity_record"
+      ],
+      "inferred_roles": [
+        "account owner",
+        "case owner"
+      ]
+    },
+    "actors": [
+      "account owner",
+      "case owner"
+    ],
+    "action_actors": {
+      "create": [
+        "account owner"
+      ],
+      "assign": [
+        "account owner"
+      ],
+      "review": [
+        "case owner"
+      ],
+      "close": [
+        "account owner"
+      ],
+      "archive": [
+        "account owner"
+      ]
+    }
+  },
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "quote_record",
     "opportunity_record",
