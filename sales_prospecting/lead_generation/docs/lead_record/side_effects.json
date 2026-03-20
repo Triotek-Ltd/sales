@@ -6,5 +6,19 @@
         "workflow_state": "archived"
       }
     }
+  ],
+  "assign": [
+    {
+      "type": "create_record",
+      "target_doc": "qualification_case",
+      "values": {
+        "title": {
+          "$template": "Qualification Case for {title|reference_no|id}"
+        },
+        "reference_no": {
+          "$template": "QUALIFICATION_CASE-{reference_no|id}"
+        }
+      }
+    }
   ]
 }

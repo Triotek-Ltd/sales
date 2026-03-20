@@ -283,7 +283,8 @@
         "list_visible": false,
         "filterable": false,
         "sortable": false
-      }
+      },
+      "relation_kind": "explicit"
     },
     {
       "field_id": "related_forecast_review",
@@ -307,7 +308,8 @@
         "list_visible": false,
         "filterable": false,
         "sortable": false
-      }
+      },
+      "relation_kind": "explicit"
     }
   ],
   "field_groups": {
@@ -424,7 +426,9 @@
         "review",
         "approve",
         "archive"
-      ]
+      ],
+      "scope": "system",
+      "ownership": "platform"
     },
     {
       "role_id": "sales manager",
@@ -435,21 +439,27 @@
         "update",
         "approve",
         "archive"
-      ]
+      ],
+      "scope": "approval",
+      "ownership": "managerial"
     },
     {
       "role_id": "sales operations analyst",
       "actions": [
         "view",
         "list"
-      ]
+      ],
+      "scope": "review",
+      "ownership": "oversight"
     },
     {
       "role_id": "team lead",
       "actions": [
         "view",
         "list"
-      ]
+      ],
+      "scope": "document",
+      "ownership": "functional"
     },
     {
       "role_id": "management reviewer",
@@ -457,7 +467,9 @@
         "view",
         "list",
         "review"
-      ]
+      ],
+      "scope": "review",
+      "ownership": "oversight"
     }
   ],
   "transaction_behavior": {

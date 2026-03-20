@@ -4,5 +4,636 @@
   "app_id": "sales",
   "type": "module",
   "status": "draft",
-  "supports_submodules": true
+  "supports_submodules": true,
+  "ui": {
+    "icon_key": "apps",
+    "accent": "#246f89",
+    "logo_image": null,
+    "cover_image": null
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "module",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "docs",
+      "flatten_submodules_in_ui": true
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "Customer Relationship Management KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "customer_relationship_management",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "Customer Relationship Management summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "customer_relationship_management",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "Customer Relationship Management charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "customer_relationship_management",
+          "metric_family": "trend"
+        },
+        "chart_specs": [
+          {
+            "id": "customer_relationship_management_trend_line",
+            "label": "Customer Relationship Management trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "customer_relationship_management_volume_column",
+            "label": "Customer Relationship Management volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "customer_relationship_management_distribution_donut",
+            "label": "Customer Relationship Management distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "account_interaction_log_trend_line",
+            "label": "Account Interaction Log trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "account_interaction_log_volume_column",
+            "label": "Account Interaction Log volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "account_interaction_log_distribution_donut",
+            "label": "Account Interaction Log distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "contact_record_trend_line",
+            "label": "Contact Record trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "contact_record_volume_column",
+            "label": "Contact Record volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "contact_record_distribution_donut",
+            "label": "Contact Record distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "customer_account_trend_line",
+            "label": "Customer Account trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "customer_account_volume_column",
+            "label": "Customer Account volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "customer_account_distribution_donut",
+            "label": "Customer Account distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "renewal_case_trend_line",
+            "label": "Renewal Case trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "renewal_case_volume_column",
+            "label": "Renewal Case volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "renewal_case_distribution_donut",
+            "label": "Renewal Case distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          }
+        ]
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "Customer Relationship Management reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "customer_relationship_management",
+          "metric_family": "reporting"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "customer_relationship_management",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "customer_relationship_management",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "customer_relationship_management",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "customer_relationship_management",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "Customer Relationship Management Overview",
+        "report_type": "dashboard_summary",
+        "surface": "module"
+      },
+      {
+        "id": "trend_report",
+        "label": "Customer Relationship Management Trends",
+        "report_type": "trend_analysis",
+        "surface": "module"
+      },
+      {
+        "id": "summary_report",
+        "label": "Account Interaction Log Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Account Interaction Log Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "customer_relationship_management_trend_line",
+        "label": "Customer Relationship Management trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "customer_relationship_management_volume_column",
+        "label": "Customer Relationship Management volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "customer_relationship_management_distribution_donut",
+        "label": "Customer Relationship Management distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "account_interaction_log_trend_line",
+        "label": "Account Interaction Log trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "account_interaction_log_volume_column",
+        "label": "Account Interaction Log volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "account_interaction_log_distribution_donut",
+        "label": "Account Interaction Log distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "contact_record_trend_line",
+        "label": "Contact Record trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "contact_record_volume_column",
+        "label": "Contact Record volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "contact_record_distribution_donut",
+        "label": "Contact Record distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "customer_account_trend_line",
+        "label": "Customer Account trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "customer_account_volume_column",
+        "label": "Customer Account volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "customer_account_distribution_donut",
+        "label": "Customer Account distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "renewal_case_trend_line",
+        "label": "Renewal Case trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "renewal_case_volume_column",
+        "label": "Renewal Case volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "renewal_case_distribution_donut",
+        "label": "Renewal Case distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ],
+    "source_docs": [],
+    "source_fields": [],
+    "child_sources": [
+      {
+        "id": "account_interaction_log",
+        "title": "Account Interaction Log",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "contact_record",
+        "title": "Contact Record",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "customer_account",
+        "title": "Customer Account",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "renewal_case",
+        "title": "Renewal Case",
+        "surface": null,
+        "source_docs": []
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "customer_account",
+      "contact_record",
+      "renewal_case",
+      "account_interaction_log",
+      "customer_invoice",
+      "quote_record"
+    ],
+    "upstream_docs": [
+      "customer_account",
+      "contact_record",
+      "renewal_case",
+      "account_interaction_log",
+      "customer_invoice",
+      "quote_record"
+    ],
+    "downstream_docs": [],
+    "actors": [
+      "account manager",
+      "support representative",
+      "sales manager",
+      "account owner",
+      "support owner",
+      "customer-success lead",
+      "case owner"
+    ],
+    "downstream_effects": [
+      "supports customer-account follow-up, renewal visibility, and relationship audit history",
+      "supports collections, service recovery, and revenue growth planning"
+    ],
+    "emits_records": [],
+    "handoff_targets": [
+      "customer_account",
+      "contact_record",
+      "renewal_case",
+      "account_interaction_log",
+      "customer_invoice",
+      "quote_record"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "account_interaction_log",
+        "target_doc": "customer_account",
+        "relation": "references"
+      },
+      {
+        "source_doc": "account_interaction_log",
+        "target_doc": "contact_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "account_interaction_log",
+        "target_doc": "renewal_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "contact_record",
+        "target_doc": "customer_account",
+        "relation": "references"
+      },
+      {
+        "source_doc": "contact_record",
+        "target_doc": "account_interaction_log",
+        "relation": "references"
+      },
+      {
+        "source_doc": "customer_account",
+        "target_doc": "contact_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "customer_account",
+        "target_doc": "account_interaction_log",
+        "relation": "references"
+      },
+      {
+        "source_doc": "customer_account",
+        "target_doc": "renewal_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "customer_account",
+        "target_doc": "customer_invoice",
+        "relation": "references"
+      },
+      {
+        "source_doc": "renewal_case",
+        "target_doc": "customer_account",
+        "relation": "references"
+      },
+      {
+        "source_doc": "renewal_case",
+        "target_doc": "account_interaction_log",
+        "relation": "references"
+      },
+      {
+        "source_doc": "renewal_case",
+        "target_doc": "quote_record",
+        "relation": "references"
+      }
+    ],
+    "operating_graph": {
+      "nodes": [
+        {
+          "id": "customer_account",
+          "kind": "doc"
+        },
+        {
+          "id": "contact_record",
+          "kind": "doc"
+        },
+        {
+          "id": "renewal_case",
+          "kind": "doc"
+        },
+        {
+          "id": "account_interaction_log",
+          "kind": "doc"
+        },
+        {
+          "id": "customer_invoice",
+          "kind": "doc"
+        },
+        {
+          "id": "quote_record",
+          "kind": "doc"
+        }
+      ],
+      "edges": [
+        {
+          "source_doc": "account_interaction_log",
+          "target_doc": "customer_account",
+          "relation": "references"
+        },
+        {
+          "source_doc": "account_interaction_log",
+          "target_doc": "contact_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "account_interaction_log",
+          "target_doc": "renewal_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "contact_record",
+          "target_doc": "customer_account",
+          "relation": "references"
+        },
+        {
+          "source_doc": "contact_record",
+          "target_doc": "account_interaction_log",
+          "relation": "references"
+        },
+        {
+          "source_doc": "customer_account",
+          "target_doc": "contact_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "customer_account",
+          "target_doc": "account_interaction_log",
+          "relation": "references"
+        },
+        {
+          "source_doc": "customer_account",
+          "target_doc": "renewal_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "customer_account",
+          "target_doc": "customer_invoice",
+          "relation": "references"
+        },
+        {
+          "source_doc": "renewal_case",
+          "target_doc": "customer_account",
+          "relation": "references"
+        },
+        {
+          "source_doc": "renewal_case",
+          "target_doc": "account_interaction_log",
+          "relation": "references"
+        },
+        {
+          "source_doc": "renewal_case",
+          "target_doc": "quote_record",
+          "relation": "references"
+        }
+      ]
+    }
+  },
+  "contract_version": 1
 }

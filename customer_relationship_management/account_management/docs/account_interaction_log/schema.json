@@ -330,7 +330,8 @@
         "list_visible": false,
         "filterable": false,
         "sortable": false
-      }
+      },
+      "relation_kind": "explicit"
     },
     {
       "field_id": "related_contact_record",
@@ -354,7 +355,8 @@
         "list_visible": false,
         "filterable": false,
         "sortable": false
-      }
+      },
+      "relation_kind": "explicit"
     },
     {
       "field_id": "related_renewal_case",
@@ -378,7 +380,8 @@
         "list_visible": false,
         "filterable": false,
         "sortable": false
-      }
+      },
+      "relation_kind": "explicit"
     }
   ],
   "field_groups": {
@@ -478,7 +481,9 @@
         "record",
         "review",
         "archive"
-      ]
+      ],
+      "scope": "system",
+      "ownership": "platform"
     },
     {
       "role_id": "account manager",
@@ -486,16 +491,23 @@
         "view",
         "list",
         "record",
-        "archive"
-      ]
+        "create",
+        "archive",
+        "update"
+      ],
+      "scope": "approval",
+      "ownership": "managerial"
     },
     {
       "role_id": "support representative",
       "actions": [
         "view",
         "list",
-        "record"
-      ]
+        "record",
+        "create"
+      ],
+      "scope": "document",
+      "ownership": "functional"
     },
     {
       "role_id": "sales manager",
@@ -503,7 +515,9 @@
         "view",
         "list",
         "review"
-      ]
+      ],
+      "scope": "approval",
+      "ownership": "managerial"
     }
   ],
   "transaction_behavior": {

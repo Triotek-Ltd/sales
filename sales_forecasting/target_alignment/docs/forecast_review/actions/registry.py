@@ -2,10 +2,12 @@
 
 from __future__ import annotations
 
+from typing import Any
+
 
 DOC_ID = "forecast_review"
 ALLOWED_ACTIONS = ['create', 'schedule', 'complete', 'close', 'archive']
-ACTION_RULES = {'create': {'allowed_in_states': ['planned', 'scheduled', 'completed'], 'transitions_to': None}, 'schedule': {'allowed_in_states': ['planned', 'scheduled', 'completed'], 'transitions_to': None}, 'complete': {'allowed_in_states': ['planned', 'scheduled', 'completed'], 'transitions_to': None}, 'close': {'allowed_in_states': ['planned', 'scheduled', 'completed'], 'transitions_to': 'closed'}, 'archive': {'allowed_in_states': ['planned', 'scheduled', 'completed'], 'transitions_to': 'archived'}}
+ACTION_RULES: dict[str, dict[str, Any]] = {'create': {'allowed_in_states': ['planned', 'scheduled', 'completed'], 'transitions_to': None}, 'schedule': {'allowed_in_states': ['planned', 'scheduled', 'completed'], 'transitions_to': None}, 'complete': {'allowed_in_states': ['planned', 'scheduled', 'completed'], 'transitions_to': None}, 'close': {'allowed_in_states': ['planned', 'scheduled', 'completed'], 'transitions_to': 'closed'}, 'archive': {'allowed_in_states': ['planned', 'scheduled', 'completed'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
 

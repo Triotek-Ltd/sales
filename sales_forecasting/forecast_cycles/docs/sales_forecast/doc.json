@@ -10,7 +10,8 @@
   "doc_archetype": "transaction",
   "classification": {
     "archetype": "transaction",
-    "bundle": "operations"
+    "bundle": "operations",
+    "doc_kind": "transaction"
   },
   "planning_source": {
     "type": "reference_doc_generation_manifest",
@@ -23,5 +24,257 @@
       "forecast versioning",
       "roll-up rules"
     ]
-  }
+  },
+  "ui": {
+    "icon_key": "receipt",
+    "accent": "#1f7a8c",
+    "logo_image": null,
+    "cover_image": null,
+    "preferred_views": [
+      "list",
+      "table",
+      "detail",
+      "report"
+    ],
+    "default_density": "comfortable"
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "doc",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "records",
+      "flatten_submodules_in_ui": false,
+      "views": [
+        "list",
+        "table",
+        "detail",
+        "report"
+      ]
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "Sales Forecast KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "sales_forecast",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "Sales Forecast summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "sales_forecast",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "Sales Forecast charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "sales_forecast",
+          "metric_family": "trend"
+        }
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "Sales Forecast reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "sales_forecast",
+          "metric_family": "reporting"
+        }
+      },
+      {
+        "id": "records",
+        "type": "record_table",
+        "title": "Sales Forecast records",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "sales_forecast",
+          "metric_family": "records"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "sales_forecast",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "sales_forecast",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "sales_forecast",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "sales_forecast",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "Sales Forecast Overview",
+        "report_type": "dashboard_summary",
+        "surface": "doc"
+      },
+      {
+        "id": "trend_report",
+        "label": "Sales Forecast Trends",
+        "report_type": "trend_analysis",
+        "surface": "doc"
+      },
+      {
+        "id": "summary_report",
+        "label": "Sales Forecast Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Sales Forecast Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "supports_outputs": true,
+    "supports_print_formats": true,
+    "default_views": [
+      "summary",
+      "trend",
+      "report_table"
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "sales_forecast_trend_line",
+        "label": "Sales Forecast trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "sales_forecast_volume_column",
+        "label": "Sales Forecast volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "sales_forecast_distribution_donut",
+        "label": "Sales Forecast distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "forecast_line",
+      "forecast_commitment",
+      "target_plan",
+      "forecast_review"
+    ],
+    "upstream_docs": [
+      "forecast_line",
+      "forecast_commitment",
+      "target_plan",
+      "forecast_review"
+    ],
+    "downstream_docs": [],
+    "borrowed_fields": [
+      "pipeline commitments from forecast_commitment"
+    ],
+    "emits_records": [],
+    "downstream_effects": [
+      "feeds production planning, demand planning, budgeting, and management reporting"
+    ],
+    "actors": [
+      "sales manager",
+      "sales operations analyst",
+      "team lead",
+      "management reviewer"
+    ],
+    "handoff_targets": [
+      "forecast_line",
+      "forecast_commitment",
+      "target_plan",
+      "forecast_review"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "sales_forecast",
+        "target_doc": "forecast_line",
+        "relation": "references"
+      },
+      {
+        "source_doc": "sales_forecast",
+        "target_doc": "forecast_commitment",
+        "relation": "references"
+      },
+      {
+        "source_doc": "sales_forecast",
+        "target_doc": "target_plan",
+        "relation": "references"
+      },
+      {
+        "source_doc": "sales_forecast",
+        "target_doc": "forecast_review",
+        "relation": "references"
+      }
+    ]
+  },
+  "contract_version": 1
 }

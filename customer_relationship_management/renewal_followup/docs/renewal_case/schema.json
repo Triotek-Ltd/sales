@@ -195,7 +195,7 @@
     {
       "field_id": "owner",
       "label": "Owner",
-      "type": "Data",
+      "type": "Link",
       "required": false,
       "read_only": false,
       "default": null,
@@ -286,7 +286,8 @@
         "list_visible": false,
         "filterable": false,
         "sortable": false
-      }
+      },
+      "relation_kind": "explicit"
     },
     {
       "field_id": "related_quote_record",
@@ -310,7 +311,8 @@
         "list_visible": false,
         "filterable": false,
         "sortable": false
-      }
+      },
+      "relation_kind": "explicit"
     }
   ],
   "field_groups": {
@@ -461,7 +463,9 @@
         "lose",
         "close",
         "archive"
-      ]
+      ],
+      "scope": "system",
+      "ownership": "platform"
     },
     {
       "role_id": "account owner",
@@ -469,10 +473,13 @@
         "view",
         "list",
         "create",
+        "update",
         "assign",
         "close",
         "archive"
-      ]
+      ],
+      "scope": "execution",
+      "ownership": "finance"
     },
     {
       "role_id": "case owner",
@@ -480,7 +487,9 @@
         "view",
         "list",
         "review"
-      ]
+      ],
+      "scope": "document",
+      "ownership": "functional"
     }
   ],
   "transaction_behavior": {

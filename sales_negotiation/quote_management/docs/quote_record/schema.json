@@ -155,7 +155,7 @@
       "unique": false,
       "options": null,
       "purpose": "primary_party",
-      "linked_doc": null,
+      "linked_doc": "party_record",
       "depends_on": null,
       "mandatory_depends_on": null,
       "read_only_depends_on": null,
@@ -172,12 +172,39 @@
     {
       "field_id": "currency",
       "label": "Currency",
-      "type": "Data",
+      "type": "Select",
       "required": false,
       "read_only": false,
       "default": null,
       "unique": false,
-      "options": null,
+      "options": {
+        "values": [
+          "USD",
+          "EUR",
+          "GBP",
+          "KES",
+          "UGX",
+          "TZS",
+          "RWF",
+          "NGN",
+          "GHS",
+          "ZAR",
+          "AED",
+          "SAR",
+          "INR",
+          "CNY",
+          "JPY",
+          "CAD",
+          "AUD",
+          "NZD",
+          "CHF",
+          "SEK",
+          "NOK",
+          "DKK",
+          "ZMW",
+          "BWP"
+        ]
+      },
       "purpose": "currency_code",
       "linked_doc": null,
       "depends_on": null,
@@ -383,7 +410,8 @@
         "list_visible": false,
         "filterable": false,
         "sortable": false
-      }
+      },
+      "relation_kind": "explicit"
     },
     {
       "field_id": "related_customer_account",
@@ -407,7 +435,8 @@
         "list_visible": false,
         "filterable": false,
         "sortable": false
-      }
+      },
+      "relation_kind": "explicit"
     },
     {
       "field_id": "related_deal_negotiation_case",
@@ -431,7 +460,8 @@
         "list_visible": false,
         "filterable": false,
         "sortable": false
-      }
+      },
+      "relation_kind": "explicit"
     },
     {
       "field_id": "related_pricing_exception_request",
@@ -455,7 +485,8 @@
         "list_visible": false,
         "filterable": false,
         "sortable": false
-      }
+      },
+      "relation_kind": "explicit"
     },
     {
       "field_id": "related_opportunity_record",
@@ -479,7 +510,8 @@
         "list_visible": false,
         "filterable": false,
         "sortable": false
-      }
+      },
+      "relation_kind": "explicit"
     }
   ],
   "field_groups": {
@@ -660,7 +692,9 @@
         "expire",
         "cancel",
         "archive"
-      ]
+      ],
+      "scope": "system",
+      "ownership": "platform"
     },
     {
       "role_id": "sales rep",
@@ -668,10 +702,13 @@
         "view",
         "list",
         "create",
+        "update",
         "issue",
         "cancel",
         "archive"
-      ]
+      ],
+      "scope": "document",
+      "ownership": "functional"
     },
     {
       "role_id": "approver",
@@ -680,14 +717,18 @@
         "list",
         "review",
         "approve"
-      ]
+      ],
+      "scope": "approval",
+      "ownership": "managerial"
     },
     {
       "role_id": "customer negotiator",
       "actions": [
         "view",
         "list"
-      ]
+      ],
+      "scope": "document",
+      "ownership": "functional"
     }
   ],
   "transaction_behavior": {

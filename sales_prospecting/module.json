@@ -4,5 +4,671 @@
   "app_id": "sales",
   "type": "module",
   "status": "draft",
-  "supports_submodules": true
+  "supports_submodules": true,
+  "ui": {
+    "icon_key": "apps",
+    "accent": "#246f89",
+    "logo_image": null,
+    "cover_image": null
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "module",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "docs",
+      "flatten_submodules_in_ui": true
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "Sales Prospecting KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "sales_prospecting",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "Sales Prospecting summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "sales_prospecting",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "Sales Prospecting charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "sales_prospecting",
+          "metric_family": "trend"
+        },
+        "chart_specs": [
+          {
+            "id": "sales_prospecting_trend_line",
+            "label": "Sales Prospecting trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "sales_prospecting_volume_column",
+            "label": "Sales Prospecting volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "sales_prospecting_distribution_donut",
+            "label": "Sales Prospecting distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "lead_record_trend_line",
+            "label": "Lead Record trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "lead_record_volume_column",
+            "label": "Lead Record volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "lead_record_distribution_donut",
+            "label": "Lead Record distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "outreach_activity_trend_line",
+            "label": "Outreach Activity trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "outreach_activity_volume_column",
+            "label": "Outreach Activity volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "outreach_activity_distribution_donut",
+            "label": "Outreach Activity distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "prospect_list_trend_line",
+            "label": "Prospect List trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "prospect_list_volume_column",
+            "label": "Prospect List volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "prospect_list_distribution_donut",
+            "label": "Prospect List distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "qualification_case_trend_line",
+            "label": "Qualification Case trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "qualification_case_volume_column",
+            "label": "Qualification Case volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "qualification_case_distribution_donut",
+            "label": "Qualification Case distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          }
+        ]
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "Sales Prospecting reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "sales_prospecting",
+          "metric_family": "reporting"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "sales_prospecting",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "sales_prospecting",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "sales_prospecting",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "sales_prospecting",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "Sales Prospecting Overview",
+        "report_type": "dashboard_summary",
+        "surface": "module"
+      },
+      {
+        "id": "trend_report",
+        "label": "Sales Prospecting Trends",
+        "report_type": "trend_analysis",
+        "surface": "module"
+      },
+      {
+        "id": "summary_report",
+        "label": "Lead Record Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Lead Record Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "sales_prospecting_trend_line",
+        "label": "Sales Prospecting trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "sales_prospecting_volume_column",
+        "label": "Sales Prospecting volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "sales_prospecting_distribution_donut",
+        "label": "Sales Prospecting distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "lead_record_trend_line",
+        "label": "Lead Record trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "lead_record_volume_column",
+        "label": "Lead Record volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "lead_record_distribution_donut",
+        "label": "Lead Record distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "outreach_activity_trend_line",
+        "label": "Outreach Activity trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "outreach_activity_volume_column",
+        "label": "Outreach Activity volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "outreach_activity_distribution_donut",
+        "label": "Outreach Activity distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "prospect_list_trend_line",
+        "label": "Prospect List trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "prospect_list_volume_column",
+        "label": "Prospect List volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "prospect_list_distribution_donut",
+        "label": "Prospect List distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "qualification_case_trend_line",
+        "label": "Qualification Case trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "qualification_case_volume_column",
+        "label": "Qualification Case volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "qualification_case_distribution_donut",
+        "label": "Qualification Case distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ],
+    "source_docs": [],
+    "source_fields": [],
+    "child_sources": [
+      {
+        "id": "lead_record",
+        "title": "Lead Record",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "outreach_activity",
+        "title": "Outreach Activity",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "prospect_list",
+        "title": "Prospect List",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "qualification_case",
+        "title": "Qualification Case",
+        "surface": null,
+        "source_docs": []
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "prospect_list",
+      "outreach_activity",
+      "qualification_case",
+      "opportunity_record",
+      "lead_record",
+      "customer_account"
+    ],
+    "upstream_docs": [
+      "prospect_list",
+      "outreach_activity",
+      "qualification_case",
+      "opportunity_record",
+      "lead_record",
+      "customer_account"
+    ],
+    "downstream_docs": [
+      "qualification_case",
+      "lead_record"
+    ],
+    "actors": [
+      "sales rep",
+      "sales manager",
+      "reviewer",
+      "account owner",
+      "case owner"
+    ],
+    "downstream_effects": [
+      "feeds opportunity, negotiation, and forecast workflows"
+    ],
+    "emits_records": [
+      {
+        "action_id": "assign",
+        "target_doc": "qualification_case",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "activate",
+        "target_doc": "lead_record",
+        "effect_type": "create_record"
+      }
+    ],
+    "handoff_targets": [
+      "prospect_list",
+      "outreach_activity",
+      "qualification_case",
+      "opportunity_record",
+      "lead_record",
+      "customer_account"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "lead_record",
+        "target_doc": "prospect_list",
+        "relation": "references"
+      },
+      {
+        "source_doc": "lead_record",
+        "target_doc": "outreach_activity",
+        "relation": "references"
+      },
+      {
+        "source_doc": "lead_record",
+        "target_doc": "qualification_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "lead_record",
+        "target_doc": "opportunity_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "lead_record",
+        "target_doc": "qualification_case",
+        "relation": "create_record",
+        "action_id": "assign"
+      },
+      {
+        "source_doc": "outreach_activity",
+        "target_doc": "lead_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "outreach_activity",
+        "target_doc": "customer_account",
+        "relation": "references"
+      },
+      {
+        "source_doc": "outreach_activity",
+        "target_doc": "qualification_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "prospect_list",
+        "target_doc": "lead_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "prospect_list",
+        "target_doc": "outreach_activity",
+        "relation": "references"
+      },
+      {
+        "source_doc": "prospect_list",
+        "target_doc": "lead_record",
+        "relation": "create_record",
+        "action_id": "activate"
+      },
+      {
+        "source_doc": "qualification_case",
+        "target_doc": "lead_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "qualification_case",
+        "target_doc": "outreach_activity",
+        "relation": "references"
+      },
+      {
+        "source_doc": "qualification_case",
+        "target_doc": "opportunity_record",
+        "relation": "references"
+      }
+    ],
+    "operating_graph": {
+      "nodes": [
+        {
+          "id": "prospect_list",
+          "kind": "doc"
+        },
+        {
+          "id": "outreach_activity",
+          "kind": "doc"
+        },
+        {
+          "id": "qualification_case",
+          "kind": "doc"
+        },
+        {
+          "id": "opportunity_record",
+          "kind": "doc"
+        },
+        {
+          "id": "lead_record",
+          "kind": "doc"
+        },
+        {
+          "id": "customer_account",
+          "kind": "doc"
+        }
+      ],
+      "edges": [
+        {
+          "source_doc": "lead_record",
+          "target_doc": "prospect_list",
+          "relation": "references"
+        },
+        {
+          "source_doc": "lead_record",
+          "target_doc": "outreach_activity",
+          "relation": "references"
+        },
+        {
+          "source_doc": "lead_record",
+          "target_doc": "qualification_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "lead_record",
+          "target_doc": "opportunity_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "lead_record",
+          "target_doc": "qualification_case",
+          "relation": "create_record",
+          "action_id": "assign"
+        },
+        {
+          "source_doc": "outreach_activity",
+          "target_doc": "lead_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "outreach_activity",
+          "target_doc": "customer_account",
+          "relation": "references"
+        },
+        {
+          "source_doc": "outreach_activity",
+          "target_doc": "qualification_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "prospect_list",
+          "target_doc": "lead_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "prospect_list",
+          "target_doc": "outreach_activity",
+          "relation": "references"
+        },
+        {
+          "source_doc": "prospect_list",
+          "target_doc": "lead_record",
+          "relation": "create_record",
+          "action_id": "activate"
+        },
+        {
+          "source_doc": "qualification_case",
+          "target_doc": "lead_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "qualification_case",
+          "target_doc": "outreach_activity",
+          "relation": "references"
+        },
+        {
+          "source_doc": "qualification_case",
+          "target_doc": "opportunity_record",
+          "relation": "references"
+        }
+      ]
+    }
+  },
+  "contract_version": 1
 }

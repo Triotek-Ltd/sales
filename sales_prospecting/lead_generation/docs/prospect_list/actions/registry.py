@@ -2,10 +2,12 @@
 
 from __future__ import annotations
 
+from typing import Any
+
 
 DOC_ID = "prospect_list"
 ALLOWED_ACTIONS = ['create', 'review', 'activate', 'close', 'archive']
-ACTION_RULES = {'create': {'allowed_in_states': ['draft', 'active'], 'transitions_to': None}, 'review': {'allowed_in_states': ['draft', 'active'], 'transitions_to': None}, 'activate': {'allowed_in_states': ['draft'], 'transitions_to': 'active'}, 'close': {'allowed_in_states': ['draft', 'active'], 'transitions_to': 'closed'}, 'archive': {'allowed_in_states': ['draft', 'active'], 'transitions_to': 'archived'}}
+ACTION_RULES: dict[str, dict[str, Any]] = {'create': {'allowed_in_states': ['draft', 'active'], 'transitions_to': None}, 'review': {'allowed_in_states': ['draft', 'active'], 'transitions_to': None}, 'activate': {'allowed_in_states': ['draft'], 'transitions_to': 'active'}, 'close': {'allowed_in_states': ['draft', 'active'], 'transitions_to': 'closed'}, 'archive': {'allowed_in_states': ['draft', 'active'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
 

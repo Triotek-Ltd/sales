@@ -2,10 +2,12 @@
 
 from __future__ import annotations
 
+from typing import Any
+
 
 DOC_ID = "deal_negotiation_case"
 ALLOWED_ACTIONS = ['create', 'assign', 'review', 'counter', 'agree', 'lose', 'close', 'archive']
-ACTION_RULES = {'create': {'allowed_in_states': ['open', 'negotiating', 'agreed', 'lost'], 'transitions_to': None}, 'assign': {'allowed_in_states': ['open', 'negotiating', 'agreed', 'lost'], 'transitions_to': None}, 'review': {'allowed_in_states': ['open', 'negotiating', 'agreed', 'lost'], 'transitions_to': None}, 'counter': {'allowed_in_states': ['open', 'negotiating', 'agreed', 'lost'], 'transitions_to': None}, 'agree': {'allowed_in_states': ['open', 'negotiating', 'agreed', 'lost'], 'transitions_to': None}, 'lose': {'allowed_in_states': ['open', 'negotiating', 'agreed', 'lost'], 'transitions_to': None}, 'close': {'allowed_in_states': ['open', 'negotiating', 'agreed', 'lost'], 'transitions_to': 'closed'}, 'archive': {'allowed_in_states': ['open', 'negotiating', 'agreed', 'lost'], 'transitions_to': 'archived'}}
+ACTION_RULES: dict[str, dict[str, Any]] = {'create': {'allowed_in_states': ['open', 'negotiating', 'agreed', 'lost'], 'transitions_to': None}, 'assign': {'allowed_in_states': ['open', 'negotiating', 'agreed', 'lost'], 'transitions_to': None}, 'review': {'allowed_in_states': ['open', 'negotiating', 'agreed', 'lost'], 'transitions_to': None}, 'counter': {'allowed_in_states': ['open', 'negotiating', 'agreed', 'lost'], 'transitions_to': None}, 'agree': {'allowed_in_states': ['open', 'negotiating', 'agreed', 'lost'], 'transitions_to': None}, 'lose': {'allowed_in_states': ['open', 'negotiating', 'agreed', 'lost'], 'transitions_to': None}, 'close': {'allowed_in_states': ['open', 'negotiating', 'agreed', 'lost'], 'transitions_to': 'closed'}, 'archive': {'allowed_in_states': ['open', 'negotiating', 'agreed', 'lost'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
 

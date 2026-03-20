@@ -192,7 +192,7 @@
     {
       "field_id": "owner",
       "label": "Owner",
-      "type": "Data",
+      "type": "Link",
       "required": false,
       "read_only": false,
       "default": null,
@@ -283,7 +283,8 @@
         "list_visible": false,
         "filterable": false,
         "sortable": false
-      }
+      },
+      "relation_kind": "explicit"
     },
     {
       "field_id": "related_account_interaction_log",
@@ -307,7 +308,8 @@
         "list_visible": false,
         "filterable": false,
         "sortable": false
-      }
+      },
+      "relation_kind": "explicit"
     },
     {
       "field_id": "related_renewal_case",
@@ -331,7 +333,8 @@
         "list_visible": false,
         "filterable": false,
         "sortable": false
-      }
+      },
+      "relation_kind": "explicit"
     }
   ],
   "field_groups": {
@@ -441,7 +444,9 @@
         "update",
         "review",
         "archive"
-      ]
+      ],
+      "scope": "system",
+      "ownership": "platform"
     },
     {
       "role_id": "account manager",
@@ -450,7 +455,9 @@
         "list",
         "create",
         "update"
-      ]
+      ],
+      "scope": "approval",
+      "ownership": "managerial"
     },
     {
       "role_id": "support owner",
@@ -458,15 +465,20 @@
         "view",
         "list",
         "review",
-        "archive"
-      ]
+        "archive",
+        "update"
+      ],
+      "scope": "document",
+      "ownership": "functional"
     },
     {
       "role_id": "customer-success lead",
       "actions": [
         "view",
         "list"
-      ]
+      ],
+      "scope": "document",
+      "ownership": "functional"
     }
   ],
   "transaction_behavior": {

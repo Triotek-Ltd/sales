@@ -313,7 +313,8 @@
         "list_visible": false,
         "filterable": false,
         "sortable": false
-      }
+      },
+      "relation_kind": "explicit"
     },
     {
       "field_id": "related_account_interaction_log",
@@ -337,7 +338,8 @@
         "list_visible": false,
         "filterable": false,
         "sortable": false
-      }
+      },
+      "relation_kind": "explicit"
     }
   ],
   "field_groups": {
@@ -441,7 +443,9 @@
         "update",
         "review",
         "archive"
-      ]
+      ],
+      "scope": "system",
+      "ownership": "platform"
     },
     {
       "role_id": "account owner",
@@ -452,7 +456,9 @@
         "update",
         "review",
         "archive"
-      ]
+      ],
+      "scope": "execution",
+      "ownership": "finance"
     }
   ],
   "transaction_behavior": {

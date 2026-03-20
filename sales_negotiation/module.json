@@ -4,5 +4,616 @@
   "app_id": "sales",
   "type": "module",
   "status": "draft",
-  "supports_submodules": true
+  "supports_submodules": true,
+  "ui": {
+    "icon_key": "apps",
+    "accent": "#246f89",
+    "logo_image": null,
+    "cover_image": null
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "module",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "docs",
+      "flatten_submodules_in_ui": true
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "Sales Negotiation KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "sales_negotiation",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "Sales Negotiation summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "sales_negotiation",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "Sales Negotiation charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "sales_negotiation",
+          "metric_family": "trend"
+        },
+        "chart_specs": [
+          {
+            "id": "sales_negotiation_trend_line",
+            "label": "Sales Negotiation trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "sales_negotiation_volume_column",
+            "label": "Sales Negotiation volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "sales_negotiation_distribution_donut",
+            "label": "Sales Negotiation distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "deal_negotiation_case_trend_line",
+            "label": "Deal Negotiation Case trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "deal_negotiation_case_volume_column",
+            "label": "Deal Negotiation Case volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "deal_negotiation_case_distribution_donut",
+            "label": "Deal Negotiation Case distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "pricing_exception_request_trend_line",
+            "label": "Pricing Exception Request trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "pricing_exception_request_volume_column",
+            "label": "Pricing Exception Request volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "pricing_exception_request_distribution_donut",
+            "label": "Pricing Exception Request distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "quote_record_trend_line",
+            "label": "Quote Record trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "quote_record_volume_column",
+            "label": "Quote Record volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "quote_record_distribution_donut",
+            "label": "Quote Record distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          }
+        ]
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "Sales Negotiation reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "sales_negotiation",
+          "metric_family": "reporting"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "sales_negotiation",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "sales_negotiation",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "sales_negotiation",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "sales_negotiation",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "Sales Negotiation Overview",
+        "report_type": "dashboard_summary",
+        "surface": "module"
+      },
+      {
+        "id": "trend_report",
+        "label": "Sales Negotiation Trends",
+        "report_type": "trend_analysis",
+        "surface": "module"
+      },
+      {
+        "id": "summary_report",
+        "label": "Deal Negotiation Case Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Deal Negotiation Case Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "sales_negotiation_trend_line",
+        "label": "Sales Negotiation trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "sales_negotiation_volume_column",
+        "label": "Sales Negotiation volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "sales_negotiation_distribution_donut",
+        "label": "Sales Negotiation distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "deal_negotiation_case_trend_line",
+        "label": "Deal Negotiation Case trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "deal_negotiation_case_volume_column",
+        "label": "Deal Negotiation Case volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "deal_negotiation_case_distribution_donut",
+        "label": "Deal Negotiation Case distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "pricing_exception_request_trend_line",
+        "label": "Pricing Exception Request trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "pricing_exception_request_volume_column",
+        "label": "Pricing Exception Request volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "pricing_exception_request_distribution_donut",
+        "label": "Pricing Exception Request distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "quote_record_trend_line",
+        "label": "Quote Record trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "quote_record_volume_column",
+        "label": "Quote Record volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "quote_record_distribution_donut",
+        "label": "Quote Record distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ],
+    "source_docs": [],
+    "source_fields": [],
+    "child_sources": [
+      {
+        "id": "deal_negotiation_case",
+        "title": "Deal Negotiation Case",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "pricing_exception_request",
+        "title": "Pricing Exception Request",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "quote_record",
+        "title": "Quote Record",
+        "surface": null,
+        "source_docs": []
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "quote_record",
+      "opportunity_record",
+      "pricing_exception_request",
+      "pricing_decision",
+      "lead_record",
+      "customer_account",
+      "deal_negotiation_case"
+    ],
+    "upstream_docs": [
+      "quote_record",
+      "opportunity_record",
+      "pricing_exception_request",
+      "pricing_decision",
+      "lead_record",
+      "customer_account",
+      "deal_negotiation_case"
+    ],
+    "downstream_docs": [
+      "quote_record",
+      "pricing_exception_request",
+      "deal_negotiation_case"
+    ],
+    "actors": [
+      "account owner",
+      "case owner",
+      "sales rep",
+      "approver",
+      "customer negotiator"
+    ],
+    "downstream_effects": [
+      "feeds order capture, billing, and relationship management"
+    ],
+    "emits_records": [
+      {
+        "action_id": "approve",
+        "target_doc": "quote_record",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "approve",
+        "target_doc": "pricing_exception_request",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "issue",
+        "target_doc": "deal_negotiation_case",
+        "effect_type": "create_record"
+      }
+    ],
+    "handoff_targets": [
+      "quote_record",
+      "opportunity_record",
+      "pricing_exception_request",
+      "pricing_decision",
+      "lead_record",
+      "customer_account",
+      "deal_negotiation_case"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "deal_negotiation_case",
+        "target_doc": "quote_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "deal_negotiation_case",
+        "target_doc": "opportunity_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "deal_negotiation_case",
+        "target_doc": "pricing_exception_request",
+        "relation": "references"
+      },
+      {
+        "source_doc": "pricing_exception_request",
+        "target_doc": "quote_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "pricing_exception_request",
+        "target_doc": "pricing_decision",
+        "relation": "references"
+      },
+      {
+        "source_doc": "pricing_exception_request",
+        "target_doc": "quote_record",
+        "relation": "create_record",
+        "action_id": "approve"
+      },
+      {
+        "source_doc": "quote_record",
+        "target_doc": "lead_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "quote_record",
+        "target_doc": "customer_account",
+        "relation": "references"
+      },
+      {
+        "source_doc": "quote_record",
+        "target_doc": "deal_negotiation_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "quote_record",
+        "target_doc": "pricing_exception_request",
+        "relation": "references"
+      },
+      {
+        "source_doc": "quote_record",
+        "target_doc": "opportunity_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "quote_record",
+        "target_doc": "pricing_exception_request",
+        "relation": "create_record",
+        "action_id": "approve"
+      },
+      {
+        "source_doc": "quote_record",
+        "target_doc": "deal_negotiation_case",
+        "relation": "create_record",
+        "action_id": "issue"
+      }
+    ],
+    "operating_graph": {
+      "nodes": [
+        {
+          "id": "quote_record",
+          "kind": "doc"
+        },
+        {
+          "id": "opportunity_record",
+          "kind": "doc"
+        },
+        {
+          "id": "pricing_exception_request",
+          "kind": "doc"
+        },
+        {
+          "id": "pricing_decision",
+          "kind": "doc"
+        },
+        {
+          "id": "lead_record",
+          "kind": "doc"
+        },
+        {
+          "id": "customer_account",
+          "kind": "doc"
+        },
+        {
+          "id": "deal_negotiation_case",
+          "kind": "doc"
+        }
+      ],
+      "edges": [
+        {
+          "source_doc": "deal_negotiation_case",
+          "target_doc": "quote_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "deal_negotiation_case",
+          "target_doc": "opportunity_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "deal_negotiation_case",
+          "target_doc": "pricing_exception_request",
+          "relation": "references"
+        },
+        {
+          "source_doc": "pricing_exception_request",
+          "target_doc": "quote_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "pricing_exception_request",
+          "target_doc": "pricing_decision",
+          "relation": "references"
+        },
+        {
+          "source_doc": "pricing_exception_request",
+          "target_doc": "quote_record",
+          "relation": "create_record",
+          "action_id": "approve"
+        },
+        {
+          "source_doc": "quote_record",
+          "target_doc": "lead_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "quote_record",
+          "target_doc": "customer_account",
+          "relation": "references"
+        },
+        {
+          "source_doc": "quote_record",
+          "target_doc": "deal_negotiation_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "quote_record",
+          "target_doc": "pricing_exception_request",
+          "relation": "references"
+        },
+        {
+          "source_doc": "quote_record",
+          "target_doc": "opportunity_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "quote_record",
+          "target_doc": "pricing_exception_request",
+          "relation": "create_record",
+          "action_id": "approve"
+        },
+        {
+          "source_doc": "quote_record",
+          "target_doc": "deal_negotiation_case",
+          "relation": "create_record",
+          "action_id": "issue"
+        }
+      ]
+    }
+  },
+  "contract_version": 1
 }

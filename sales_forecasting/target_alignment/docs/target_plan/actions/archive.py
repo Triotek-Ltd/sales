@@ -2,17 +2,19 @@
 
 from __future__ import annotations
 
+from typing import Any, cast
+
 
 DOC_ID = "target_plan"
 ACTION_ID = "archive"
-ACTION_RULE = {'allowed_in_states': ['draft', 'active'], 'transitions_to': 'archived'}
+ACTION_RULE: dict[str, Any] = {'allowed_in_states': ['draft', 'active'], 'transitions_to': 'archived'}
 
 STATE_FIELD = 'workflow_state'
 WORKFLOW_HINTS = {'business_objective': 'translate historical performance, market signals, and pipeline opportunity data into forecast commitments and management targets', 'actors': ['sales manager', 'sales operations analyst', 'team lead', 'management reviewer'], 'start_condition': 'a new forecast period is opened', 'ordered_steps': ['Review the forecast against targets and risk.'], 'primary_actions': ['create', 'schedule', 'complete', 'close'], 'primary_transitions': [], 'downstream_effects': ['feeds production planning, demand planning, budgeting, and management reporting'], 'action_actors': {'create': ['sales manager'], 'update': ['sales manager'], 'review': ['management reviewer'], 'approve': ['sales manager'], 'archive': ['sales manager']}}
 
 def handle_archive(payload: dict, context: dict | None = None) -> dict:
     context = context or {}
-    next_state = ACTION_RULE.get("transitions_to")
+    next_state = cast(str | None, ACTION_RULE.get("transitions_to"))
     updates = {STATE_FIELD: next_state} if STATE_FIELD and next_state else {}
     return {
         "doc_id": DOC_ID,

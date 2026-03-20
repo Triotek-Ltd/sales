@@ -2,13 +2,15 @@
 
 from __future__ import annotations
 
+from typing import Any, cast
+
 
 DOC_ID = "prospect_list"
 ARCHETYPE = "transaction"
 INITIAL_STATE = 'draft'
 STATES = ['draft', 'active', 'closed', 'archived']
 TERMINAL_STATES = ['closed', 'archived']
-ACTION_RULES = {'create': {'allowed_in_states': ['draft', 'active'], 'transitions_to': None}, 'review': {'allowed_in_states': ['draft', 'active'], 'transitions_to': None}, 'activate': {'allowed_in_states': ['draft'], 'transitions_to': 'active'}, 'close': {'allowed_in_states': ['draft', 'active'], 'transitions_to': 'closed'}, 'archive': {'allowed_in_states': ['draft', 'active'], 'transitions_to': 'archived'}}
+ACTION_RULES: dict[str, dict[str, Any]] = {'create': {'allowed_in_states': ['draft', 'active'], 'transitions_to': None}, 'review': {'allowed_in_states': ['draft', 'active'], 'transitions_to': None}, 'activate': {'allowed_in_states': ['draft'], 'transitions_to': 'active'}, 'close': {'allowed_in_states': ['draft', 'active'], 'transitions_to': 'closed'}, 'archive': {'allowed_in_states': ['draft', 'active'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
 WORKFLOW_HINTS = {'relation_context': {'related_docs': ['lead_record', 'outreach_activity'], 'borrowed_fields': ['segment or campaign context from marketing docs'], 'inferred_roles': ['account owner']}, 'actors': ['account owner'], 'action_actors': {'create': ['account owner'], 'review': ['account owner'], 'activate': ['account owner'], 'close': ['account owner'], 'archive': ['account owner']}}
@@ -29,7 +31,7 @@ class WorkflowService:
 
     def next_state_for(self, action_id: str) -> str | None:
         rule = ACTION_RULES.get(action_id, {})
-        return rule.get("transitions_to")
+        return cast(str | None, rule.get("transitions_to"))
 
     def apply_action(self, action_id: str, state: str | None) -> dict:
         if not self.is_action_allowed(action_id, state):

@@ -2,13 +2,15 @@
 
 from __future__ import annotations
 
+from typing import Any, cast
+
 
 DOC_ID = "account_interaction_log"
 ARCHETYPE = "ledger"
 INITIAL_STATE = 'active'
 STATES = ['active', 'archived']
 TERMINAL_STATES = ['archived']
-ACTION_RULES = {'record': {'allowed_in_states': ['active'], 'transitions_to': None}, 'review': {'allowed_in_states': ['active'], 'transitions_to': None}, 'archive': {'allowed_in_states': ['active'], 'transitions_to': 'archived'}}
+ACTION_RULES: dict[str, dict[str, Any]] = {'record': {'allowed_in_states': ['active'], 'transitions_to': None}, 'review': {'allowed_in_states': ['active'], 'transitions_to': None}, 'archive': {'allowed_in_states': ['active'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
 WORKFLOW_HINTS = {'business_objective': 'capture account touchpoints, preserve relationship history, and hand off follow-up work to the right owner', 'actors': ['account manager', 'support representative', 'sales manager'], 'start_condition': 'an account interaction or follow-up event occurs', 'ordered_steps': ['Record the interaction.', 'Review the follow-up requirement.', 'Archive when the interaction history is no longer active.'], 'primary_actions': ['record', 'review', 'archive'], 'action_actors': {'record': ['account manager', 'support representative'], 'review': ['sales manager'], 'archive': ['account manager']}, 'primary_transitions': ['account_interaction_log: active -> archived'], 'downstream_effects': ['supports customer-account follow-up, renewal visibility, and relationship audit history']}
@@ -29,7 +31,7 @@ class WorkflowService:
 
     def next_state_for(self, action_id: str) -> str | None:
         rule = ACTION_RULES.get(action_id, {})
-        return rule.get("transitions_to")
+        return cast(str | None, rule.get("transitions_to"))
 
     def apply_action(self, action_id: str, state: str | None) -> dict:
         if not self.is_action_allowed(action_id, state):

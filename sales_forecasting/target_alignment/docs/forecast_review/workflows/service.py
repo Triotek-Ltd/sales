@@ -2,13 +2,15 @@
 
 from __future__ import annotations
 
+from typing import Any, cast
+
 
 DOC_ID = "forecast_review"
 ARCHETYPE = "event"
 INITIAL_STATE = 'planned'
 STATES = ['planned', 'scheduled', 'completed', 'closed', 'archived']
 TERMINAL_STATES = ['closed', 'archived']
-ACTION_RULES = {'create': {'allowed_in_states': ['planned', 'scheduled', 'completed'], 'transitions_to': None}, 'schedule': {'allowed_in_states': ['planned', 'scheduled', 'completed'], 'transitions_to': None}, 'complete': {'allowed_in_states': ['planned', 'scheduled', 'completed'], 'transitions_to': None}, 'close': {'allowed_in_states': ['planned', 'scheduled', 'completed'], 'transitions_to': 'closed'}, 'archive': {'allowed_in_states': ['planned', 'scheduled', 'completed'], 'transitions_to': 'archived'}}
+ACTION_RULES: dict[str, dict[str, Any]] = {'create': {'allowed_in_states': ['planned', 'scheduled', 'completed'], 'transitions_to': None}, 'schedule': {'allowed_in_states': ['planned', 'scheduled', 'completed'], 'transitions_to': None}, 'complete': {'allowed_in_states': ['planned', 'scheduled', 'completed'], 'transitions_to': None}, 'close': {'allowed_in_states': ['planned', 'scheduled', 'completed'], 'transitions_to': 'closed'}, 'archive': {'allowed_in_states': ['planned', 'scheduled', 'completed'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
 WORKFLOW_HINTS = {'business_objective': 'translate historical performance, market signals, and pipeline opportunity data into forecast commitments and management targets', 'actors': ['sales manager', 'sales operations analyst', 'team lead', 'management reviewer'], 'start_condition': 'a new forecast period is opened', 'ordered_steps': ['Review the forecast against targets and risk.'], 'primary_actions': ['create', 'schedule', 'complete', 'close'], 'primary_transitions': ['forecast_review: planned -> scheduled -> completed -> closed'], 'downstream_effects': ['feeds production planning, demand planning, budgeting, and management reporting'], 'action_actors': {'create': ['sales manager'], 'close': ['sales manager'], 'archive': ['sales manager']}}
@@ -29,7 +31,7 @@ class WorkflowService:
 
     def next_state_for(self, action_id: str) -> str | None:
         rule = ACTION_RULES.get(action_id, {})
-        return rule.get("transitions_to")
+        return cast(str | None, rule.get("transitions_to"))
 
     def apply_action(self, action_id: str, state: str | None) -> dict:
         if not self.is_action_allowed(action_id, state):

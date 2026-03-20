@@ -2,17 +2,19 @@
 
 from __future__ import annotations
 
+from typing import Any, cast
+
 
 DOC_ID = "pricing_exception_request"
 ACTION_ID = "create"
-ACTION_RULE = {'allowed_in_states': ['draft', 'submitted', 'approved', 'rejected'], 'transitions_to': None}
+ACTION_RULE: dict[str, Any] = {'allowed_in_states': ['draft', 'submitted', 'approved', 'rejected'], 'transitions_to': None}
 
 STATE_FIELD = 'workflow_state'
 WORKFLOW_HINTS = {'relation_context': {'related_docs': ['quote_record', 'pricing_decision'], 'borrowed_fields': ['base commercial terms from quote_record'], 'inferred_roles': ['account owner']}, 'actors': ['account owner'], 'action_actors': {'create': ['account owner'], 'submit': ['account owner'], 'review': ['account owner'], 'approve': ['account owner'], 'reject': ['account owner'], 'close': ['account owner'], 'archive': ['account owner']}}
 
 def handle_create(payload: dict, context: dict | None = None) -> dict:
     context = context or {}
-    next_state = ACTION_RULE.get("transitions_to")
+    next_state = cast(str | None, ACTION_RULE.get("transitions_to"))
     updates = {STATE_FIELD: next_state} if STATE_FIELD and next_state else {}
     return {
         "doc_id": DOC_ID,

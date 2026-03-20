@@ -10,7 +10,8 @@
   "doc_archetype": "transaction",
   "classification": {
     "archetype": "transaction",
-    "bundle": "operations"
+    "bundle": "operations",
+    "doc_kind": "transaction"
   },
   "planning_source": {
     "type": "reference_doc_generation_manifest",
@@ -24,5 +25,257 @@
       "split between pipeline",
       "order creation"
     ]
-  }
+  },
+  "ui": {
+    "icon_key": "receipt",
+    "accent": "#1f7a8c",
+    "logo_image": null,
+    "cover_image": null,
+    "preferred_views": [
+      "list",
+      "table",
+      "detail",
+      "report"
+    ],
+    "default_density": "comfortable"
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "doc",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "records",
+      "flatten_submodules_in_ui": false,
+      "views": [
+        "list",
+        "table",
+        "detail",
+        "report"
+      ]
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "Opportunity Record KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "opportunity_record",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "Opportunity Record summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "opportunity_record",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "Opportunity Record charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "opportunity_record",
+          "metric_family": "trend"
+        }
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "Opportunity Record reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "opportunity_record",
+          "metric_family": "reporting"
+        }
+      },
+      {
+        "id": "records",
+        "type": "record_table",
+        "title": "Opportunity Record records",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "opportunity_record",
+          "metric_family": "records"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "opportunity_record",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "opportunity_record",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "opportunity_record",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "opportunity_record",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "Opportunity Record Overview",
+        "report_type": "dashboard_summary",
+        "surface": "doc"
+      },
+      {
+        "id": "trend_report",
+        "label": "Opportunity Record Trends",
+        "report_type": "trend_analysis",
+        "surface": "doc"
+      },
+      {
+        "id": "summary_report",
+        "label": "Opportunity Record Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Opportunity Record Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "supports_outputs": true,
+    "supports_print_formats": true,
+    "default_views": [
+      "summary",
+      "trend",
+      "report_table"
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "opportunity_record_trend_line",
+        "label": "Opportunity Record trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "opportunity_record_volume_column",
+        "label": "Opportunity Record volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "opportunity_record_distribution_donut",
+        "label": "Opportunity Record distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "lead_record",
+      "quote_record",
+      "pipeline_stage_history",
+      "forecast_commitment"
+    ],
+    "upstream_docs": [
+      "lead_record",
+      "quote_record",
+      "pipeline_stage_history",
+      "forecast_commitment"
+    ],
+    "downstream_docs": [],
+    "borrowed_fields": [
+      "account or lead identity from linked records"
+    ],
+    "emits_records": [],
+    "downstream_effects": [
+      "feeds production planning, demand planning, budgeting, and management reporting"
+    ],
+    "actors": [
+      "sales manager",
+      "sales operations analyst",
+      "team lead",
+      "management reviewer"
+    ],
+    "handoff_targets": [
+      "lead_record",
+      "quote_record",
+      "pipeline_stage_history",
+      "forecast_commitment"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "opportunity_record",
+        "target_doc": "lead_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "opportunity_record",
+        "target_doc": "quote_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "opportunity_record",
+        "target_doc": "pipeline_stage_history",
+        "relation": "references"
+      },
+      {
+        "source_doc": "opportunity_record",
+        "target_doc": "forecast_commitment",
+        "relation": "references"
+      }
+    ]
+  },
+  "contract_version": 1
 }

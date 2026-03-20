@@ -15,6 +15,250 @@
   },
   "doc_key": "pricing_exception_request",
   "doc_title": "Pricing Exception Request",
+  "ui": {
+    "icon_key": "checklist",
+    "accent": "#2d6a4f",
+    "logo_image": null,
+    "cover_image": null,
+    "preferred_views": [
+      "list",
+      "table",
+      "detail",
+      "report"
+    ],
+    "default_density": "comfortable"
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "doc",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "records",
+      "flatten_submodules_in_ui": false,
+      "views": [
+        "list",
+        "table",
+        "detail",
+        "report"
+      ]
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "Pricing Exception Request KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "pricing_exception_request",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "Pricing Exception Request summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "pricing_exception_request",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "Pricing Exception Request charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "pricing_exception_request",
+          "metric_family": "trend"
+        }
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "Pricing Exception Request reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "pricing_exception_request",
+          "metric_family": "reporting"
+        }
+      },
+      {
+        "id": "records",
+        "type": "record_table",
+        "title": "Pricing Exception Request records",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "pricing_exception_request",
+          "metric_family": "records"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "pricing_exception_request",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "pricing_exception_request",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "pricing_exception_request",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "pricing_exception_request",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "Pricing Exception Request Overview",
+        "report_type": "dashboard_summary",
+        "surface": "doc"
+      },
+      {
+        "id": "trend_report",
+        "label": "Pricing Exception Request Trends",
+        "report_type": "trend_analysis",
+        "surface": "doc"
+      },
+      {
+        "id": "summary_report",
+        "label": "Pricing Exception Request Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Pricing Exception Request Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "supports_outputs": true,
+    "supports_print_formats": true,
+    "default_views": [
+      "summary",
+      "trend",
+      "report_table"
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "pricing_exception_request_trend_line",
+        "label": "Pricing Exception Request trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "pricing_exception_request_volume_column",
+        "label": "Pricing Exception Request volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "pricing_exception_request_distribution_donut",
+        "label": "Pricing Exception Request distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "quote_record",
+      "pricing_decision"
+    ],
+    "upstream_docs": [
+      "quote_record",
+      "pricing_decision"
+    ],
+    "downstream_docs": [
+      "quote_record"
+    ],
+    "borrowed_fields": [
+      "base commercial terms from quote_record"
+    ],
+    "emits_records": [
+      {
+        "action_id": "approve",
+        "target_doc": "quote_record",
+        "effect_type": "create_record"
+      }
+    ],
+    "downstream_effects": [],
+    "actors": [
+      "account owner"
+    ],
+    "handoff_targets": [
+      "quote_record",
+      "pricing_decision"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "pricing_exception_request",
+        "target_doc": "quote_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "pricing_exception_request",
+        "target_doc": "pricing_decision",
+        "relation": "references"
+      },
+      {
+        "source_doc": "pricing_exception_request",
+        "target_doc": "quote_record",
+        "relation": "create_record",
+        "action_id": "approve"
+      }
+    ]
+  },
   "allowed_actions": [
     "create",
     "submit",
@@ -287,14 +531,14 @@
       {
         "field_id": "approver",
         "label": "Approver",
-        "type": "Data",
+        "type": "Link",
         "required": false,
         "read_only": false,
         "default": null,
         "unique": false,
         "options": null,
         "purpose": "actor_reference",
-        "linked_doc": null,
+        "linked_doc": "employee_record",
         "depends_on": null,
         "mandatory_depends_on": null,
         "read_only_depends_on": null,
@@ -311,7 +555,7 @@
       {
         "field_id": "decision",
         "label": "Decision",
-        "type": "Data",
+        "type": "Link",
         "required": false,
         "read_only": false,
         "default": null,
@@ -354,7 +598,8 @@
           "list_visible": false,
           "filterable": false,
           "sortable": false
-        }
+        },
+        "relation_kind": "explicit"
       }
     ],
     "title_field": "title",
@@ -478,7 +723,9 @@
           "reject",
           "close",
           "archive"
-        ]
+        ],
+        "scope": "system",
+        "ownership": "platform"
       },
       {
         "role_id": "account owner",
@@ -486,13 +733,16 @@
           "view",
           "list",
           "create",
+          "update",
           "submit",
           "review",
           "approve",
           "reject",
           "close",
           "archive"
-        ]
+        ],
+        "scope": "execution",
+        "ownership": "finance"
       }
     ],
     "transaction_behavior": {
@@ -550,7 +800,119 @@
         "modified"
       ],
       "default_filters": [],
-      "quick_entry": false
+      "quick_entry": false,
+      "form_layout": {
+        "version": 1,
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "sections": [
+              {
+                "id": "identity",
+                "label": "Identity",
+                "columns": [
+                  {
+                    "id": "identity_column_1",
+                    "label": "",
+                    "width": 6,
+                    "fieldIds": [
+                      "title"
+                    ]
+                  },
+                  {
+                    "id": "identity_column_2",
+                    "label": "",
+                    "width": 6,
+                    "fieldIds": [
+                      "reference_no"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "status",
+                "label": "Workflow",
+                "columns": [
+                  {
+                    "id": "status_column_1",
+                    "label": "",
+                    "width": 12,
+                    "fieldIds": [
+                      "workflow_state"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "details",
+            "label": "Details",
+            "sections": [
+              {
+                "id": "content",
+                "label": "Details",
+                "columns": [
+                  {
+                    "id": "content_column_1",
+                    "label": "",
+                    "width": 6,
+                    "fieldIds": [
+                      "request_code",
+                      "requested_variance",
+                      "approver"
+                    ]
+                  },
+                  {
+                    "id": "content_column_2",
+                    "label": "",
+                    "width": 6,
+                    "fieldIds": [
+                      "linked_quote",
+                      "reason"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "content_details",
+                "label": "Description",
+                "columns": [
+                  {
+                    "id": "content_details_column_1",
+                    "label": "",
+                    "width": 12,
+                    "fieldIds": [
+                      "description"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "related",
+            "label": "Related",
+            "sections": [
+              {
+                "id": "relations",
+                "label": "Related Records",
+                "columns": [
+                  {
+                    "id": "relations_column_1",
+                    "label": "",
+                    "width": 12,
+                    "fieldIds": [
+                      "decision"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     "related_docs": [
       {
@@ -593,7 +955,11 @@
       "show_activity_log": true,
       "show_comments": true,
       "show_assignments": true,
-      "show_related_docs": true
+      "show_related_docs": true,
+      "show_kpis": true,
+      "show_summaries": true,
+      "show_charts": true,
+      "show_reports": true
     },
     "integration": {
       "external_refs": [],
@@ -644,6 +1010,17 @@
         }
       },
       "action_side_effects_file": "side_effects.json"
+    },
+    "dashboard": {
+      "metric_blocks": [
+        "kpis",
+        "summaries",
+        "charts",
+        "reports",
+        "records"
+      ],
+      "default_view": "list",
+      "reporting_surface": "doc"
     }
   },
   "classification": {
@@ -697,8 +1074,10 @@
       }
     },
     "report_boundary_classification": "workflow/support doc",
-    "validation_status": "ready",
-    "validation_warnings": []
+    "validation_status": "warning",
+    "validation_warnings": [
+      "helper_relation_field:related_quote_record"
+    ]
   },
   "business_logic": {
     "seeded": true,
@@ -746,6 +1125,15 @@
     "api_base_path": "/apis/sales/sales_negotiation/deal_structuring/pricing_exception_request/",
     "status_field": "workflow_state",
     "initial_state": "draft",
+    "actions": [
+      "create",
+      "submit",
+      "review",
+      "approve",
+      "reject",
+      "close",
+      "archive"
+    ],
     "required_fields": [
       "title",
       "workflow_state"
@@ -787,6 +1175,41 @@
       "pricing_decision"
     ],
     "downstream_effects": [],
+    "role_action_matrix": [
+      {
+        "role_id": "System Manager",
+        "actions": [
+          "view",
+          "list",
+          "create",
+          "submit",
+          "review",
+          "approve",
+          "reject",
+          "close",
+          "archive"
+        ],
+        "scope": "system",
+        "ownership": "platform"
+      },
+      {
+        "role_id": "account owner",
+        "actions": [
+          "view",
+          "list",
+          "create",
+          "update",
+          "submit",
+          "review",
+          "approve",
+          "reject",
+          "close",
+          "archive"
+        ],
+        "scope": "execution",
+        "ownership": "finance"
+      }
+    ],
     "action_side_effects_file": "side_effects.json"
   },
   "runtime": {

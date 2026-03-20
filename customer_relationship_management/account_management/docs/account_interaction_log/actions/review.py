@@ -2,17 +2,19 @@
 
 from __future__ import annotations
 
+from typing import Any, cast
+
 
 DOC_ID = "account_interaction_log"
 ACTION_ID = "review"
-ACTION_RULE = {'allowed_in_states': ['active'], 'transitions_to': None}
+ACTION_RULE: dict[str, Any] = {'allowed_in_states': ['active'], 'transitions_to': None}
 
 STATE_FIELD = 'workflow_state'
 WORKFLOW_HINTS = {'business_objective': 'capture account touchpoints, preserve relationship history, and hand off follow-up work to the right owner', 'actors': ['account manager', 'support representative', 'sales manager'], 'start_condition': 'an account interaction or follow-up event occurs', 'ordered_steps': ['Record the interaction.', 'Review the follow-up requirement.', 'Archive when the interaction history is no longer active.'], 'primary_actions': ['record', 'review', 'archive'], 'action_actors': {'record': ['account manager', 'support representative'], 'review': ['sales manager'], 'archive': ['account manager']}, 'primary_transitions': ['account_interaction_log: active -> archived'], 'downstream_effects': ['supports customer-account follow-up, renewal visibility, and relationship audit history']}
 
 def handle_review(payload: dict, context: dict | None = None) -> dict:
     context = context or {}
-    next_state = ACTION_RULE.get("transitions_to")
+    next_state = cast(str | None, ACTION_RULE.get("transitions_to"))
     updates = {STATE_FIELD: next_state} if STATE_FIELD and next_state else {}
     return {
         "doc_id": DOC_ID,

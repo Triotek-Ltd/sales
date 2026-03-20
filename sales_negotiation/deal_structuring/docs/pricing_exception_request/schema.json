@@ -219,14 +219,14 @@
     {
       "field_id": "approver",
       "label": "Approver",
-      "type": "Data",
+      "type": "Link",
       "required": false,
       "read_only": false,
       "default": null,
       "unique": false,
       "options": null,
       "purpose": "actor_reference",
-      "linked_doc": null,
+      "linked_doc": "employee_record",
       "depends_on": null,
       "mandatory_depends_on": null,
       "read_only_depends_on": null,
@@ -243,7 +243,7 @@
     {
       "field_id": "decision",
       "label": "Decision",
-      "type": "Data",
+      "type": "Link",
       "required": false,
       "read_only": false,
       "default": null,
@@ -286,7 +286,8 @@
         "list_visible": false,
         "filterable": false,
         "sortable": false
-      }
+      },
+      "relation_kind": "explicit"
     }
   ],
   "field_groups": {
@@ -435,7 +436,9 @@
         "reject",
         "close",
         "archive"
-      ]
+      ],
+      "scope": "system",
+      "ownership": "platform"
     },
     {
       "role_id": "account owner",
@@ -443,13 +446,16 @@
         "view",
         "list",
         "create",
+        "update",
         "submit",
         "review",
         "approve",
         "reject",
         "close",
         "archive"
-      ]
+      ],
+      "scope": "execution",
+      "ownership": "finance"
     }
   ],
   "transaction_behavior": {

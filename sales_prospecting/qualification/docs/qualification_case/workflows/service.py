@@ -2,13 +2,15 @@
 
 from __future__ import annotations
 
+from typing import Any, cast
+
 
 DOC_ID = "qualification_case"
 ARCHETYPE = "workflow_case"
 INITIAL_STATE = 'open'
 STATES = ['open', 'in_review', 'qualified', 'disqualified', 'closed', 'archived']
 TERMINAL_STATES = ['closed', 'archived']
-ACTION_RULES = {'create': {'allowed_in_states': ['open', 'in_review', 'qualified', 'disqualified'], 'transitions_to': None}, 'assign': {'allowed_in_states': ['open', 'in_review', 'qualified', 'disqualified'], 'transitions_to': 'in_review'}, 'review': {'allowed_in_states': ['open', 'in_review', 'qualified', 'disqualified'], 'transitions_to': 'in_review'}, 'qualify': {'allowed_in_states': ['open', 'in_review', 'qualified', 'disqualified'], 'transitions_to': None}, 'disqualify': {'allowed_in_states': ['open', 'in_review', 'qualified', 'disqualified'], 'transitions_to': None}, 'close': {'allowed_in_states': ['open', 'in_review', 'qualified', 'disqualified'], 'transitions_to': 'closed'}, 'archive': {'allowed_in_states': ['open', 'in_review', 'qualified', 'disqualified'], 'transitions_to': 'archived'}}
+ACTION_RULES: dict[str, dict[str, Any]] = {'create': {'allowed_in_states': ['open', 'in_review', 'qualified', 'disqualified'], 'transitions_to': None}, 'assign': {'allowed_in_states': ['open', 'in_review', 'qualified', 'disqualified'], 'transitions_to': 'in_review'}, 'review': {'allowed_in_states': ['open', 'in_review', 'qualified', 'disqualified'], 'transitions_to': 'in_review'}, 'qualify': {'allowed_in_states': ['open', 'in_review', 'qualified', 'disqualified'], 'transitions_to': None}, 'disqualify': {'allowed_in_states': ['open', 'in_review', 'qualified', 'disqualified'], 'transitions_to': None}, 'close': {'allowed_in_states': ['open', 'in_review', 'qualified', 'disqualified'], 'transitions_to': 'closed'}, 'archive': {'allowed_in_states': ['open', 'in_review', 'qualified', 'disqualified'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
 WORKFLOW_HINTS = {'business_objective': 'turn raw prospects into qualified leads with documented outreach and qualification evidence', 'actors': ['sales rep', 'sales manager', 'reviewer'], 'start_condition': 'a target customer or lead source is identified', 'ordered_steps': ['Open and progress the qualification case.'], 'primary_actions': ['create', 'assign', 'qualify', 'disqualify', 'close'], 'primary_transitions': ['qualification_case: opened -> in_review -> qualified or disqualified -> closed'], 'downstream_effects': ['feeds opportunity, negotiation, and forecast workflows'], 'action_actors': {'create': ['sales rep'], 'assign': ['sales rep'], 'review': ['reviewer'], 'close': ['sales manager'], 'archive': ['sales manager']}}
@@ -29,7 +31,7 @@ class WorkflowService:
 
     def next_state_for(self, action_id: str) -> str | None:
         rule = ACTION_RULES.get(action_id, {})
-        return rule.get("transitions_to")
+        return cast(str | None, rule.get("transitions_to"))
 
     def apply_action(self, action_id: str, state: str | None) -> dict:
         if not self.is_action_allowed(action_id, state):

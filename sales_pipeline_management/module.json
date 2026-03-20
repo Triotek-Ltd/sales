@@ -4,5 +4,540 @@
   "app_id": "sales",
   "type": "module",
   "status": "draft",
-  "supports_submodules": true
+  "supports_submodules": true,
+  "ui": {
+    "icon_key": "apps",
+    "accent": "#246f89",
+    "logo_image": null,
+    "cover_image": null
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "module",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "docs",
+      "flatten_submodules_in_ui": true
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "Sales Pipeline Management KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "sales_pipeline_management",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "Sales Pipeline Management summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "sales_pipeline_management",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "Sales Pipeline Management charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "sales_pipeline_management",
+          "metric_family": "trend"
+        },
+        "chart_specs": [
+          {
+            "id": "sales_pipeline_management_trend_line",
+            "label": "Sales Pipeline Management trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "sales_pipeline_management_volume_column",
+            "label": "Sales Pipeline Management volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "sales_pipeline_management_distribution_donut",
+            "label": "Sales Pipeline Management distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "forecast_commitment_trend_line",
+            "label": "Forecast Commitment trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "forecast_commitment_volume_column",
+            "label": "Forecast Commitment volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "forecast_commitment_distribution_donut",
+            "label": "Forecast Commitment distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "opportunity_record_trend_line",
+            "label": "Opportunity Record trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "opportunity_record_volume_column",
+            "label": "Opportunity Record volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "opportunity_record_distribution_donut",
+            "label": "Opportunity Record distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "pipeline_stage_history_trend_line",
+            "label": "Pipeline Stage History trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "pipeline_stage_history_volume_column",
+            "label": "Pipeline Stage History volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "pipeline_stage_history_distribution_donut",
+            "label": "Pipeline Stage History distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          }
+        ]
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "Sales Pipeline Management reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "sales_pipeline_management",
+          "metric_family": "reporting"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "sales_pipeline_management",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "sales_pipeline_management",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "sales_pipeline_management",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "sales_pipeline_management",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "Sales Pipeline Management Overview",
+        "report_type": "dashboard_summary",
+        "surface": "module"
+      },
+      {
+        "id": "trend_report",
+        "label": "Sales Pipeline Management Trends",
+        "report_type": "trend_analysis",
+        "surface": "module"
+      },
+      {
+        "id": "summary_report",
+        "label": "Forecast Commitment Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Forecast Commitment Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "sales_pipeline_management_trend_line",
+        "label": "Sales Pipeline Management trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "sales_pipeline_management_volume_column",
+        "label": "Sales Pipeline Management volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "sales_pipeline_management_distribution_donut",
+        "label": "Sales Pipeline Management distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "forecast_commitment_trend_line",
+        "label": "Forecast Commitment trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "forecast_commitment_volume_column",
+        "label": "Forecast Commitment volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "forecast_commitment_distribution_donut",
+        "label": "Forecast Commitment distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "opportunity_record_trend_line",
+        "label": "Opportunity Record trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "opportunity_record_volume_column",
+        "label": "Opportunity Record volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "opportunity_record_distribution_donut",
+        "label": "Opportunity Record distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "pipeline_stage_history_trend_line",
+        "label": "Pipeline Stage History trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "pipeline_stage_history_volume_column",
+        "label": "Pipeline Stage History volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "pipeline_stage_history_distribution_donut",
+        "label": "Pipeline Stage History distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ],
+    "source_docs": [],
+    "source_fields": [],
+    "child_sources": [
+      {
+        "id": "forecast_commitment",
+        "title": "Forecast Commitment",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "opportunity_record",
+        "title": "Opportunity Record",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "pipeline_stage_history",
+        "title": "Pipeline Stage History",
+        "surface": null,
+        "source_docs": []
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "opportunity_record",
+      "sales_forecast",
+      "forecast_line",
+      "lead_record",
+      "quote_record",
+      "pipeline_stage_history",
+      "forecast_commitment"
+    ],
+    "upstream_docs": [
+      "opportunity_record",
+      "sales_forecast",
+      "forecast_line",
+      "lead_record",
+      "quote_record",
+      "pipeline_stage_history",
+      "forecast_commitment"
+    ],
+    "downstream_docs": [],
+    "actors": [
+      "sales manager",
+      "sales operations analyst",
+      "team lead",
+      "management reviewer",
+      "account owner"
+    ],
+    "downstream_effects": [
+      "feeds production planning, demand planning, budgeting, and management reporting"
+    ],
+    "emits_records": [],
+    "handoff_targets": [
+      "opportunity_record",
+      "sales_forecast",
+      "forecast_line",
+      "lead_record",
+      "quote_record",
+      "pipeline_stage_history",
+      "forecast_commitment"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "forecast_commitment",
+        "target_doc": "opportunity_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "forecast_commitment",
+        "target_doc": "sales_forecast",
+        "relation": "references"
+      },
+      {
+        "source_doc": "forecast_commitment",
+        "target_doc": "forecast_line",
+        "relation": "references"
+      },
+      {
+        "source_doc": "opportunity_record",
+        "target_doc": "lead_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "opportunity_record",
+        "target_doc": "quote_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "opportunity_record",
+        "target_doc": "pipeline_stage_history",
+        "relation": "references"
+      },
+      {
+        "source_doc": "opportunity_record",
+        "target_doc": "forecast_commitment",
+        "relation": "references"
+      },
+      {
+        "source_doc": "pipeline_stage_history",
+        "target_doc": "opportunity_record",
+        "relation": "references"
+      }
+    ],
+    "operating_graph": {
+      "nodes": [
+        {
+          "id": "opportunity_record",
+          "kind": "doc"
+        },
+        {
+          "id": "sales_forecast",
+          "kind": "doc"
+        },
+        {
+          "id": "forecast_line",
+          "kind": "doc"
+        },
+        {
+          "id": "lead_record",
+          "kind": "doc"
+        },
+        {
+          "id": "quote_record",
+          "kind": "doc"
+        },
+        {
+          "id": "pipeline_stage_history",
+          "kind": "doc"
+        },
+        {
+          "id": "forecast_commitment",
+          "kind": "doc"
+        }
+      ],
+      "edges": [
+        {
+          "source_doc": "forecast_commitment",
+          "target_doc": "opportunity_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "forecast_commitment",
+          "target_doc": "sales_forecast",
+          "relation": "references"
+        },
+        {
+          "source_doc": "forecast_commitment",
+          "target_doc": "forecast_line",
+          "relation": "references"
+        },
+        {
+          "source_doc": "opportunity_record",
+          "target_doc": "lead_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "opportunity_record",
+          "target_doc": "quote_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "opportunity_record",
+          "target_doc": "pipeline_stage_history",
+          "relation": "references"
+        },
+        {
+          "source_doc": "opportunity_record",
+          "target_doc": "forecast_commitment",
+          "relation": "references"
+        },
+        {
+          "source_doc": "pipeline_stage_history",
+          "target_doc": "opportunity_record",
+          "relation": "references"
+        }
+      ]
+    }
+  },
+  "contract_version": 1
 }

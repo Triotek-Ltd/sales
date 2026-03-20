@@ -2,13 +2,15 @@
 
 from __future__ import annotations
 
+from typing import Any, cast
+
 
 DOC_ID = "deal_negotiation_case"
 ARCHETYPE = "workflow_case"
 INITIAL_STATE = 'open'
 STATES = ['open', 'negotiating', 'agreed', 'lost', 'closed', 'archived']
 TERMINAL_STATES = ['closed', 'archived']
-ACTION_RULES = {'create': {'allowed_in_states': ['open', 'negotiating', 'agreed', 'lost'], 'transitions_to': None}, 'assign': {'allowed_in_states': ['open', 'negotiating', 'agreed', 'lost'], 'transitions_to': None}, 'review': {'allowed_in_states': ['open', 'negotiating', 'agreed', 'lost'], 'transitions_to': None}, 'counter': {'allowed_in_states': ['open', 'negotiating', 'agreed', 'lost'], 'transitions_to': None}, 'agree': {'allowed_in_states': ['open', 'negotiating', 'agreed', 'lost'], 'transitions_to': None}, 'lose': {'allowed_in_states': ['open', 'negotiating', 'agreed', 'lost'], 'transitions_to': None}, 'close': {'allowed_in_states': ['open', 'negotiating', 'agreed', 'lost'], 'transitions_to': 'closed'}, 'archive': {'allowed_in_states': ['open', 'negotiating', 'agreed', 'lost'], 'transitions_to': 'archived'}}
+ACTION_RULES: dict[str, dict[str, Any]] = {'create': {'allowed_in_states': ['open', 'negotiating', 'agreed', 'lost'], 'transitions_to': None}, 'assign': {'allowed_in_states': ['open', 'negotiating', 'agreed', 'lost'], 'transitions_to': None}, 'review': {'allowed_in_states': ['open', 'negotiating', 'agreed', 'lost'], 'transitions_to': None}, 'counter': {'allowed_in_states': ['open', 'negotiating', 'agreed', 'lost'], 'transitions_to': None}, 'agree': {'allowed_in_states': ['open', 'negotiating', 'agreed', 'lost'], 'transitions_to': None}, 'lose': {'allowed_in_states': ['open', 'negotiating', 'agreed', 'lost'], 'transitions_to': None}, 'close': {'allowed_in_states': ['open', 'negotiating', 'agreed', 'lost'], 'transitions_to': 'closed'}, 'archive': {'allowed_in_states': ['open', 'negotiating', 'agreed', 'lost'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
 WORKFLOW_HINTS = {'relation_context': {'related_docs': ['quote_record', 'opportunity_record', 'pricing_exception_request'], 'borrowed_fields': ['commercial terms from quote_record', 'deal value from opportunity_record'], 'inferred_roles': ['account owner', 'case owner']}, 'actors': ['account owner', 'case owner'], 'action_actors': {'create': ['account owner'], 'assign': ['account owner'], 'review': ['case owner'], 'close': ['account owner'], 'archive': ['account owner']}}
@@ -29,7 +31,7 @@ class WorkflowService:
 
     def next_state_for(self, action_id: str) -> str | None:
         rule = ACTION_RULES.get(action_id, {})
-        return rule.get("transitions_to")
+        return cast(str | None, rule.get("transitions_to"))
 
     def apply_action(self, action_id: str, state: str | None) -> dict:
         if not self.is_action_allowed(action_id, state):

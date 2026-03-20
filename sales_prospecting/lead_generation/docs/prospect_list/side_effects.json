@@ -21,6 +21,18 @@
       "fields": {
         "workflow_state": "active"
       }
+    },
+    {
+      "type": "create_record",
+      "target_doc": "lead_record",
+      "values": {
+        "title": {
+          "$template": "Lead Record for {title|reference_no|id}"
+        },
+        "reference_no": {
+          "$template": "LEAD_RECORD-{reference_no|id}"
+        }
+      }
     }
   ],
   "close": [

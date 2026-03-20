@@ -2,10 +2,12 @@
 
 from __future__ import annotations
 
+from typing import Any
+
 
 DOC_ID = "forecast_commitment"
 ALLOWED_ACTIONS = ['create', 'review', 'commit', 'revise', 'archive']
-ACTION_RULES = {'create': {'allowed_in_states': ['draft', 'reviewed', 'committed', 'revised'], 'transitions_to': None}, 'review': {'allowed_in_states': ['draft', 'reviewed', 'committed', 'revised'], 'transitions_to': 'reviewed'}, 'commit': {'allowed_in_states': ['draft', 'reviewed', 'committed', 'revised'], 'transitions_to': None}, 'revise': {'allowed_in_states': ['draft', 'reviewed', 'committed', 'revised'], 'transitions_to': None}, 'archive': {'allowed_in_states': ['draft', 'reviewed', 'committed', 'revised'], 'transitions_to': 'archived'}}
+ACTION_RULES: dict[str, dict[str, Any]] = {'create': {'allowed_in_states': ['draft', 'reviewed', 'committed', 'revised'], 'transitions_to': None}, 'review': {'allowed_in_states': ['draft', 'reviewed', 'committed', 'revised'], 'transitions_to': 'reviewed'}, 'commit': {'allowed_in_states': ['draft', 'reviewed', 'committed', 'revised'], 'transitions_to': None}, 'revise': {'allowed_in_states': ['draft', 'reviewed', 'committed', 'revised'], 'transitions_to': None}, 'archive': {'allowed_in_states': ['draft', 'reviewed', 'committed', 'revised'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
 

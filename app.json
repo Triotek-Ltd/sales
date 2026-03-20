@@ -8,5 +8,2312 @@
     "id": "CUSTOM-PROPRIETARY",
     "type": "proprietary_custom",
     "terms_ref": "LICENSE"
+  },
+  "ui": {
+    "icon_key": "apps",
+    "accent": "#246f89",
+    "logo_image": null,
+    "cover_image": null
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "app",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "modules",
+      "flatten_submodules_in_ui": false
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "My Plug App KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "app",
+          "entity_id": "sales",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "My Plug App summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "app",
+          "entity_id": "sales",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "My Plug App charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "app",
+          "entity_id": "sales",
+          "metric_family": "trend"
+        },
+        "chart_specs": [
+          {
+            "id": "sales_trend_line",
+            "label": "My Plug App trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "sales_volume_column",
+            "label": "My Plug App volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "sales_distribution_donut",
+            "label": "My Plug App distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "customer_relationship_management_trend_line",
+            "label": "Customer Relationship Management trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "customer_relationship_management_volume_column",
+            "label": "Customer Relationship Management volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "customer_relationship_management_distribution_donut",
+            "label": "Customer Relationship Management distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "account_interaction_log_trend_line",
+            "label": "Account Interaction Log trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "account_interaction_log_volume_column",
+            "label": "Account Interaction Log volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "account_interaction_log_distribution_donut",
+            "label": "Account Interaction Log distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "contact_record_trend_line",
+            "label": "Contact Record trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "contact_record_volume_column",
+            "label": "Contact Record volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "contact_record_distribution_donut",
+            "label": "Contact Record distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "customer_account_trend_line",
+            "label": "Customer Account trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "customer_account_volume_column",
+            "label": "Customer Account volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "customer_account_distribution_donut",
+            "label": "Customer Account distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "renewal_case_trend_line",
+            "label": "Renewal Case trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "renewal_case_volume_column",
+            "label": "Renewal Case volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "renewal_case_distribution_donut",
+            "label": "Renewal Case distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "sales_forecasting_trend_line",
+            "label": "Sales Forecasting trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "sales_forecasting_volume_column",
+            "label": "Sales Forecasting volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "sales_forecasting_distribution_donut",
+            "label": "Sales Forecasting distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "forecast_line_trend_line",
+            "label": "Forecast Line trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "forecast_line_volume_column",
+            "label": "Forecast Line volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "forecast_line_distribution_donut",
+            "label": "Forecast Line distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "sales_forecast_trend_line",
+            "label": "Sales Forecast trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "sales_forecast_volume_column",
+            "label": "Sales Forecast volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "sales_forecast_distribution_donut",
+            "label": "Sales Forecast distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "forecast_review_trend_line",
+            "label": "Forecast Review trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "forecast_review_volume_column",
+            "label": "Forecast Review volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "forecast_review_distribution_donut",
+            "label": "Forecast Review distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "target_plan_trend_line",
+            "label": "Target Plan trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "target_plan_volume_column",
+            "label": "Target Plan volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "target_plan_distribution_donut",
+            "label": "Target Plan distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "sales_negotiation_trend_line",
+            "label": "Sales Negotiation trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "sales_negotiation_volume_column",
+            "label": "Sales Negotiation volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "sales_negotiation_distribution_donut",
+            "label": "Sales Negotiation distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "deal_negotiation_case_trend_line",
+            "label": "Deal Negotiation Case trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "deal_negotiation_case_volume_column",
+            "label": "Deal Negotiation Case volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "deal_negotiation_case_distribution_donut",
+            "label": "Deal Negotiation Case distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "pricing_exception_request_trend_line",
+            "label": "Pricing Exception Request trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "pricing_exception_request_volume_column",
+            "label": "Pricing Exception Request volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "pricing_exception_request_distribution_donut",
+            "label": "Pricing Exception Request distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "quote_record_trend_line",
+            "label": "Quote Record trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "quote_record_volume_column",
+            "label": "Quote Record volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "quote_record_distribution_donut",
+            "label": "Quote Record distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "sales_pipeline_management_trend_line",
+            "label": "Sales Pipeline Management trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "sales_pipeline_management_volume_column",
+            "label": "Sales Pipeline Management volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "sales_pipeline_management_distribution_donut",
+            "label": "Sales Pipeline Management distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "forecast_commitment_trend_line",
+            "label": "Forecast Commitment trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "forecast_commitment_volume_column",
+            "label": "Forecast Commitment volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "forecast_commitment_distribution_donut",
+            "label": "Forecast Commitment distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "opportunity_record_trend_line",
+            "label": "Opportunity Record trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "opportunity_record_volume_column",
+            "label": "Opportunity Record volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "opportunity_record_distribution_donut",
+            "label": "Opportunity Record distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "pipeline_stage_history_trend_line",
+            "label": "Pipeline Stage History trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "pipeline_stage_history_volume_column",
+            "label": "Pipeline Stage History volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "pipeline_stage_history_distribution_donut",
+            "label": "Pipeline Stage History distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "sales_prospecting_trend_line",
+            "label": "Sales Prospecting trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "sales_prospecting_volume_column",
+            "label": "Sales Prospecting volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "sales_prospecting_distribution_donut",
+            "label": "Sales Prospecting distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "lead_record_trend_line",
+            "label": "Lead Record trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "lead_record_volume_column",
+            "label": "Lead Record volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "lead_record_distribution_donut",
+            "label": "Lead Record distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "outreach_activity_trend_line",
+            "label": "Outreach Activity trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "outreach_activity_volume_column",
+            "label": "Outreach Activity volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "outreach_activity_distribution_donut",
+            "label": "Outreach Activity distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "prospect_list_trend_line",
+            "label": "Prospect List trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "prospect_list_volume_column",
+            "label": "Prospect List volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "prospect_list_distribution_donut",
+            "label": "Prospect List distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "qualification_case_trend_line",
+            "label": "Qualification Case trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "qualification_case_volume_column",
+            "label": "Qualification Case volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "qualification_case_distribution_donut",
+            "label": "Qualification Case distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          }
+        ]
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "My Plug App reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "app",
+          "entity_id": "sales",
+          "metric_family": "reporting"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "app",
+        "entity_id": "sales",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "app",
+        "entity_id": "sales",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "app",
+        "entity_id": "sales",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "app",
+        "entity_id": "sales",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "My Plug App Overview",
+        "report_type": "dashboard_summary",
+        "surface": "app"
+      },
+      {
+        "id": "trend_report",
+        "label": "My Plug App Trends",
+        "report_type": "trend_analysis",
+        "surface": "app"
+      },
+      {
+        "id": "summary_report",
+        "label": "Account Interaction Log Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Account Interaction Log Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "sales_trend_line",
+        "label": "My Plug App trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "sales_volume_column",
+        "label": "My Plug App volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "sales_distribution_donut",
+        "label": "My Plug App distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "customer_relationship_management_trend_line",
+        "label": "Customer Relationship Management trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "customer_relationship_management_volume_column",
+        "label": "Customer Relationship Management volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "customer_relationship_management_distribution_donut",
+        "label": "Customer Relationship Management distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "account_interaction_log_trend_line",
+        "label": "Account Interaction Log trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "account_interaction_log_volume_column",
+        "label": "Account Interaction Log volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "account_interaction_log_distribution_donut",
+        "label": "Account Interaction Log distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "contact_record_trend_line",
+        "label": "Contact Record trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "contact_record_volume_column",
+        "label": "Contact Record volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "contact_record_distribution_donut",
+        "label": "Contact Record distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "customer_account_trend_line",
+        "label": "Customer Account trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "customer_account_volume_column",
+        "label": "Customer Account volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "customer_account_distribution_donut",
+        "label": "Customer Account distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "renewal_case_trend_line",
+        "label": "Renewal Case trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "renewal_case_volume_column",
+        "label": "Renewal Case volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "renewal_case_distribution_donut",
+        "label": "Renewal Case distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "sales_forecasting_trend_line",
+        "label": "Sales Forecasting trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "sales_forecasting_volume_column",
+        "label": "Sales Forecasting volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "sales_forecasting_distribution_donut",
+        "label": "Sales Forecasting distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "forecast_line_trend_line",
+        "label": "Forecast Line trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "forecast_line_volume_column",
+        "label": "Forecast Line volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "forecast_line_distribution_donut",
+        "label": "Forecast Line distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "sales_forecast_trend_line",
+        "label": "Sales Forecast trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "sales_forecast_volume_column",
+        "label": "Sales Forecast volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "sales_forecast_distribution_donut",
+        "label": "Sales Forecast distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "forecast_review_trend_line",
+        "label": "Forecast Review trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "forecast_review_volume_column",
+        "label": "Forecast Review volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "forecast_review_distribution_donut",
+        "label": "Forecast Review distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "target_plan_trend_line",
+        "label": "Target Plan trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "target_plan_volume_column",
+        "label": "Target Plan volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "target_plan_distribution_donut",
+        "label": "Target Plan distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "sales_negotiation_trend_line",
+        "label": "Sales Negotiation trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "sales_negotiation_volume_column",
+        "label": "Sales Negotiation volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "sales_negotiation_distribution_donut",
+        "label": "Sales Negotiation distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "deal_negotiation_case_trend_line",
+        "label": "Deal Negotiation Case trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "deal_negotiation_case_volume_column",
+        "label": "Deal Negotiation Case volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "deal_negotiation_case_distribution_donut",
+        "label": "Deal Negotiation Case distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "pricing_exception_request_trend_line",
+        "label": "Pricing Exception Request trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "pricing_exception_request_volume_column",
+        "label": "Pricing Exception Request volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "pricing_exception_request_distribution_donut",
+        "label": "Pricing Exception Request distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "quote_record_trend_line",
+        "label": "Quote Record trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "quote_record_volume_column",
+        "label": "Quote Record volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "quote_record_distribution_donut",
+        "label": "Quote Record distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "sales_pipeline_management_trend_line",
+        "label": "Sales Pipeline Management trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "sales_pipeline_management_volume_column",
+        "label": "Sales Pipeline Management volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "sales_pipeline_management_distribution_donut",
+        "label": "Sales Pipeline Management distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "forecast_commitment_trend_line",
+        "label": "Forecast Commitment trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "forecast_commitment_volume_column",
+        "label": "Forecast Commitment volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "forecast_commitment_distribution_donut",
+        "label": "Forecast Commitment distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "opportunity_record_trend_line",
+        "label": "Opportunity Record trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "opportunity_record_volume_column",
+        "label": "Opportunity Record volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "opportunity_record_distribution_donut",
+        "label": "Opportunity Record distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "pipeline_stage_history_trend_line",
+        "label": "Pipeline Stage History trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "pipeline_stage_history_volume_column",
+        "label": "Pipeline Stage History volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "pipeline_stage_history_distribution_donut",
+        "label": "Pipeline Stage History distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "sales_prospecting_trend_line",
+        "label": "Sales Prospecting trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "sales_prospecting_volume_column",
+        "label": "Sales Prospecting volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "sales_prospecting_distribution_donut",
+        "label": "Sales Prospecting distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "lead_record_trend_line",
+        "label": "Lead Record trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "lead_record_volume_column",
+        "label": "Lead Record volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "lead_record_distribution_donut",
+        "label": "Lead Record distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "outreach_activity_trend_line",
+        "label": "Outreach Activity trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "outreach_activity_volume_column",
+        "label": "Outreach Activity volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "outreach_activity_distribution_donut",
+        "label": "Outreach Activity distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "prospect_list_trend_line",
+        "label": "Prospect List trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "prospect_list_volume_column",
+        "label": "Prospect List volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "prospect_list_distribution_donut",
+        "label": "Prospect List distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "qualification_case_trend_line",
+        "label": "Qualification Case trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "qualification_case_volume_column",
+        "label": "Qualification Case volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "qualification_case_distribution_donut",
+        "label": "Qualification Case distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ],
+    "source_docs": [],
+    "source_fields": [],
+    "child_sources": [
+      {
+        "id": "customer_relationship_management",
+        "title": "Customer Relationship Management",
+        "surface": "module",
+        "source_docs": []
+      },
+      {
+        "id": "sales_forecasting",
+        "title": "Sales Forecasting",
+        "surface": "module",
+        "source_docs": []
+      },
+      {
+        "id": "sales_negotiation",
+        "title": "Sales Negotiation",
+        "surface": "module",
+        "source_docs": []
+      },
+      {
+        "id": "sales_pipeline_management",
+        "title": "Sales Pipeline Management",
+        "surface": "module",
+        "source_docs": []
+      },
+      {
+        "id": "sales_prospecting",
+        "title": "Sales Prospecting",
+        "surface": "module",
+        "source_docs": []
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "customer_account",
+      "contact_record",
+      "renewal_case",
+      "account_interaction_log",
+      "customer_invoice",
+      "quote_record",
+      "sales_forecast",
+      "forecast_commitment",
+      "opportunity_record",
+      "forecast_line",
+      "target_plan",
+      "forecast_review",
+      "pricing_exception_request",
+      "pricing_decision",
+      "lead_record",
+      "deal_negotiation_case",
+      "pipeline_stage_history",
+      "prospect_list",
+      "outreach_activity",
+      "qualification_case"
+    ],
+    "upstream_docs": [
+      "customer_account",
+      "contact_record",
+      "renewal_case",
+      "account_interaction_log",
+      "customer_invoice",
+      "quote_record",
+      "sales_forecast",
+      "forecast_commitment",
+      "opportunity_record",
+      "forecast_line",
+      "target_plan",
+      "forecast_review",
+      "pricing_exception_request",
+      "pricing_decision",
+      "lead_record",
+      "deal_negotiation_case",
+      "pipeline_stage_history",
+      "prospect_list",
+      "outreach_activity",
+      "qualification_case"
+    ],
+    "downstream_docs": [
+      "quote_record",
+      "pricing_exception_request",
+      "deal_negotiation_case",
+      "qualification_case",
+      "lead_record"
+    ],
+    "actors": [
+      "account manager",
+      "support representative",
+      "sales manager",
+      "account owner",
+      "support owner",
+      "customer-success lead",
+      "case owner",
+      "sales operations analyst",
+      "team lead",
+      "management reviewer",
+      "sales rep",
+      "approver",
+      "customer negotiator",
+      "reviewer"
+    ],
+    "downstream_effects": [
+      "supports customer-account follow-up, renewal visibility, and relationship audit history",
+      "supports collections, service recovery, and revenue growth planning",
+      "feeds production planning, demand planning, budgeting, and management reporting",
+      "feeds order capture, billing, and relationship management",
+      "feeds opportunity, negotiation, and forecast workflows"
+    ],
+    "emits_records": [
+      {
+        "action_id": "approve",
+        "target_doc": "quote_record",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "approve",
+        "target_doc": "pricing_exception_request",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "issue",
+        "target_doc": "deal_negotiation_case",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "assign",
+        "target_doc": "qualification_case",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "activate",
+        "target_doc": "lead_record",
+        "effect_type": "create_record"
+      }
+    ],
+    "handoff_targets": [
+      "customer_account",
+      "contact_record",
+      "renewal_case",
+      "account_interaction_log",
+      "customer_invoice",
+      "quote_record",
+      "sales_forecast",
+      "forecast_commitment",
+      "opportunity_record",
+      "forecast_line",
+      "target_plan",
+      "forecast_review",
+      "pricing_exception_request",
+      "pricing_decision",
+      "lead_record",
+      "deal_negotiation_case",
+      "pipeline_stage_history",
+      "prospect_list",
+      "outreach_activity",
+      "qualification_case"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "account_interaction_log",
+        "target_doc": "customer_account",
+        "relation": "references"
+      },
+      {
+        "source_doc": "account_interaction_log",
+        "target_doc": "contact_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "account_interaction_log",
+        "target_doc": "renewal_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "contact_record",
+        "target_doc": "customer_account",
+        "relation": "references"
+      },
+      {
+        "source_doc": "contact_record",
+        "target_doc": "account_interaction_log",
+        "relation": "references"
+      },
+      {
+        "source_doc": "customer_account",
+        "target_doc": "contact_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "customer_account",
+        "target_doc": "account_interaction_log",
+        "relation": "references"
+      },
+      {
+        "source_doc": "customer_account",
+        "target_doc": "renewal_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "customer_account",
+        "target_doc": "customer_invoice",
+        "relation": "references"
+      },
+      {
+        "source_doc": "renewal_case",
+        "target_doc": "customer_account",
+        "relation": "references"
+      },
+      {
+        "source_doc": "renewal_case",
+        "target_doc": "account_interaction_log",
+        "relation": "references"
+      },
+      {
+        "source_doc": "renewal_case",
+        "target_doc": "quote_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "forecast_line",
+        "target_doc": "sales_forecast",
+        "relation": "references"
+      },
+      {
+        "source_doc": "forecast_line",
+        "target_doc": "forecast_commitment",
+        "relation": "references"
+      },
+      {
+        "source_doc": "forecast_line",
+        "target_doc": "opportunity_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "sales_forecast",
+        "target_doc": "forecast_line",
+        "relation": "references"
+      },
+      {
+        "source_doc": "sales_forecast",
+        "target_doc": "forecast_commitment",
+        "relation": "references"
+      },
+      {
+        "source_doc": "sales_forecast",
+        "target_doc": "target_plan",
+        "relation": "references"
+      },
+      {
+        "source_doc": "sales_forecast",
+        "target_doc": "forecast_review",
+        "relation": "references"
+      },
+      {
+        "source_doc": "forecast_review",
+        "target_doc": "sales_forecast",
+        "relation": "references"
+      },
+      {
+        "source_doc": "forecast_review",
+        "target_doc": "target_plan",
+        "relation": "references"
+      },
+      {
+        "source_doc": "forecast_review",
+        "target_doc": "forecast_commitment",
+        "relation": "references"
+      },
+      {
+        "source_doc": "target_plan",
+        "target_doc": "sales_forecast",
+        "relation": "references"
+      },
+      {
+        "source_doc": "target_plan",
+        "target_doc": "forecast_review",
+        "relation": "references"
+      },
+      {
+        "source_doc": "deal_negotiation_case",
+        "target_doc": "quote_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "deal_negotiation_case",
+        "target_doc": "opportunity_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "deal_negotiation_case",
+        "target_doc": "pricing_exception_request",
+        "relation": "references"
+      },
+      {
+        "source_doc": "pricing_exception_request",
+        "target_doc": "quote_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "pricing_exception_request",
+        "target_doc": "pricing_decision",
+        "relation": "references"
+      },
+      {
+        "source_doc": "pricing_exception_request",
+        "target_doc": "quote_record",
+        "relation": "create_record",
+        "action_id": "approve"
+      },
+      {
+        "source_doc": "quote_record",
+        "target_doc": "lead_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "quote_record",
+        "target_doc": "customer_account",
+        "relation": "references"
+      },
+      {
+        "source_doc": "quote_record",
+        "target_doc": "deal_negotiation_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "quote_record",
+        "target_doc": "pricing_exception_request",
+        "relation": "references"
+      },
+      {
+        "source_doc": "quote_record",
+        "target_doc": "opportunity_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "quote_record",
+        "target_doc": "pricing_exception_request",
+        "relation": "create_record",
+        "action_id": "approve"
+      },
+      {
+        "source_doc": "quote_record",
+        "target_doc": "deal_negotiation_case",
+        "relation": "create_record",
+        "action_id": "issue"
+      },
+      {
+        "source_doc": "forecast_commitment",
+        "target_doc": "opportunity_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "forecast_commitment",
+        "target_doc": "sales_forecast",
+        "relation": "references"
+      },
+      {
+        "source_doc": "forecast_commitment",
+        "target_doc": "forecast_line",
+        "relation": "references"
+      },
+      {
+        "source_doc": "opportunity_record",
+        "target_doc": "lead_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "opportunity_record",
+        "target_doc": "quote_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "opportunity_record",
+        "target_doc": "pipeline_stage_history",
+        "relation": "references"
+      },
+      {
+        "source_doc": "opportunity_record",
+        "target_doc": "forecast_commitment",
+        "relation": "references"
+      },
+      {
+        "source_doc": "pipeline_stage_history",
+        "target_doc": "opportunity_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "lead_record",
+        "target_doc": "prospect_list",
+        "relation": "references"
+      },
+      {
+        "source_doc": "lead_record",
+        "target_doc": "outreach_activity",
+        "relation": "references"
+      },
+      {
+        "source_doc": "lead_record",
+        "target_doc": "qualification_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "lead_record",
+        "target_doc": "opportunity_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "lead_record",
+        "target_doc": "qualification_case",
+        "relation": "create_record",
+        "action_id": "assign"
+      },
+      {
+        "source_doc": "outreach_activity",
+        "target_doc": "lead_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "outreach_activity",
+        "target_doc": "customer_account",
+        "relation": "references"
+      },
+      {
+        "source_doc": "outreach_activity",
+        "target_doc": "qualification_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "prospect_list",
+        "target_doc": "lead_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "prospect_list",
+        "target_doc": "outreach_activity",
+        "relation": "references"
+      },
+      {
+        "source_doc": "prospect_list",
+        "target_doc": "lead_record",
+        "relation": "create_record",
+        "action_id": "activate"
+      },
+      {
+        "source_doc": "qualification_case",
+        "target_doc": "lead_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "qualification_case",
+        "target_doc": "outreach_activity",
+        "relation": "references"
+      },
+      {
+        "source_doc": "qualification_case",
+        "target_doc": "opportunity_record",
+        "relation": "references"
+      }
+    ],
+    "operating_graph": {
+      "nodes": [
+        {
+          "id": "customer_relationship_management",
+          "kind": "module",
+          "title": "Customer Relationship Management"
+        },
+        {
+          "id": "sales_forecasting",
+          "kind": "module",
+          "title": "Sales Forecasting"
+        },
+        {
+          "id": "sales_negotiation",
+          "kind": "module",
+          "title": "Sales Negotiation"
+        },
+        {
+          "id": "sales_pipeline_management",
+          "kind": "module",
+          "title": "Sales Pipeline Management"
+        },
+        {
+          "id": "sales_prospecting",
+          "kind": "module",
+          "title": "Sales Prospecting"
+        },
+        {
+          "id": "customer_account",
+          "kind": "doc"
+        },
+        {
+          "id": "contact_record",
+          "kind": "doc"
+        },
+        {
+          "id": "renewal_case",
+          "kind": "doc"
+        },
+        {
+          "id": "account_interaction_log",
+          "kind": "doc"
+        },
+        {
+          "id": "customer_invoice",
+          "kind": "doc"
+        },
+        {
+          "id": "quote_record",
+          "kind": "doc"
+        },
+        {
+          "id": "sales_forecast",
+          "kind": "doc"
+        },
+        {
+          "id": "forecast_commitment",
+          "kind": "doc"
+        },
+        {
+          "id": "opportunity_record",
+          "kind": "doc"
+        },
+        {
+          "id": "forecast_line",
+          "kind": "doc"
+        },
+        {
+          "id": "target_plan",
+          "kind": "doc"
+        },
+        {
+          "id": "forecast_review",
+          "kind": "doc"
+        },
+        {
+          "id": "pricing_exception_request",
+          "kind": "doc"
+        },
+        {
+          "id": "pricing_decision",
+          "kind": "doc"
+        },
+        {
+          "id": "lead_record",
+          "kind": "doc"
+        },
+        {
+          "id": "deal_negotiation_case",
+          "kind": "doc"
+        },
+        {
+          "id": "pipeline_stage_history",
+          "kind": "doc"
+        },
+        {
+          "id": "prospect_list",
+          "kind": "doc"
+        },
+        {
+          "id": "outreach_activity",
+          "kind": "doc"
+        },
+        {
+          "id": "qualification_case",
+          "kind": "doc"
+        }
+      ],
+      "edges": [
+        {
+          "source_doc": "account_interaction_log",
+          "target_doc": "customer_account",
+          "relation": "references"
+        },
+        {
+          "source_doc": "account_interaction_log",
+          "target_doc": "contact_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "account_interaction_log",
+          "target_doc": "renewal_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "contact_record",
+          "target_doc": "customer_account",
+          "relation": "references"
+        },
+        {
+          "source_doc": "contact_record",
+          "target_doc": "account_interaction_log",
+          "relation": "references"
+        },
+        {
+          "source_doc": "customer_account",
+          "target_doc": "contact_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "customer_account",
+          "target_doc": "account_interaction_log",
+          "relation": "references"
+        },
+        {
+          "source_doc": "customer_account",
+          "target_doc": "renewal_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "customer_account",
+          "target_doc": "customer_invoice",
+          "relation": "references"
+        },
+        {
+          "source_doc": "renewal_case",
+          "target_doc": "customer_account",
+          "relation": "references"
+        },
+        {
+          "source_doc": "renewal_case",
+          "target_doc": "account_interaction_log",
+          "relation": "references"
+        },
+        {
+          "source_doc": "renewal_case",
+          "target_doc": "quote_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "forecast_line",
+          "target_doc": "sales_forecast",
+          "relation": "references"
+        },
+        {
+          "source_doc": "forecast_line",
+          "target_doc": "forecast_commitment",
+          "relation": "references"
+        },
+        {
+          "source_doc": "forecast_line",
+          "target_doc": "opportunity_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "sales_forecast",
+          "target_doc": "forecast_line",
+          "relation": "references"
+        },
+        {
+          "source_doc": "sales_forecast",
+          "target_doc": "forecast_commitment",
+          "relation": "references"
+        },
+        {
+          "source_doc": "sales_forecast",
+          "target_doc": "target_plan",
+          "relation": "references"
+        },
+        {
+          "source_doc": "sales_forecast",
+          "target_doc": "forecast_review",
+          "relation": "references"
+        },
+        {
+          "source_doc": "forecast_review",
+          "target_doc": "sales_forecast",
+          "relation": "references"
+        },
+        {
+          "source_doc": "forecast_review",
+          "target_doc": "target_plan",
+          "relation": "references"
+        },
+        {
+          "source_doc": "forecast_review",
+          "target_doc": "forecast_commitment",
+          "relation": "references"
+        },
+        {
+          "source_doc": "target_plan",
+          "target_doc": "sales_forecast",
+          "relation": "references"
+        },
+        {
+          "source_doc": "target_plan",
+          "target_doc": "forecast_review",
+          "relation": "references"
+        },
+        {
+          "source_doc": "deal_negotiation_case",
+          "target_doc": "quote_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "deal_negotiation_case",
+          "target_doc": "opportunity_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "deal_negotiation_case",
+          "target_doc": "pricing_exception_request",
+          "relation": "references"
+        },
+        {
+          "source_doc": "pricing_exception_request",
+          "target_doc": "quote_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "pricing_exception_request",
+          "target_doc": "pricing_decision",
+          "relation": "references"
+        },
+        {
+          "source_doc": "pricing_exception_request",
+          "target_doc": "quote_record",
+          "relation": "create_record",
+          "action_id": "approve"
+        },
+        {
+          "source_doc": "quote_record",
+          "target_doc": "lead_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "quote_record",
+          "target_doc": "customer_account",
+          "relation": "references"
+        },
+        {
+          "source_doc": "quote_record",
+          "target_doc": "deal_negotiation_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "quote_record",
+          "target_doc": "pricing_exception_request",
+          "relation": "references"
+        },
+        {
+          "source_doc": "quote_record",
+          "target_doc": "opportunity_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "quote_record",
+          "target_doc": "pricing_exception_request",
+          "relation": "create_record",
+          "action_id": "approve"
+        },
+        {
+          "source_doc": "quote_record",
+          "target_doc": "deal_negotiation_case",
+          "relation": "create_record",
+          "action_id": "issue"
+        },
+        {
+          "source_doc": "forecast_commitment",
+          "target_doc": "opportunity_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "forecast_commitment",
+          "target_doc": "sales_forecast",
+          "relation": "references"
+        },
+        {
+          "source_doc": "forecast_commitment",
+          "target_doc": "forecast_line",
+          "relation": "references"
+        },
+        {
+          "source_doc": "opportunity_record",
+          "target_doc": "lead_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "opportunity_record",
+          "target_doc": "quote_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "opportunity_record",
+          "target_doc": "pipeline_stage_history",
+          "relation": "references"
+        },
+        {
+          "source_doc": "opportunity_record",
+          "target_doc": "forecast_commitment",
+          "relation": "references"
+        },
+        {
+          "source_doc": "pipeline_stage_history",
+          "target_doc": "opportunity_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "lead_record",
+          "target_doc": "prospect_list",
+          "relation": "references"
+        },
+        {
+          "source_doc": "lead_record",
+          "target_doc": "outreach_activity",
+          "relation": "references"
+        },
+        {
+          "source_doc": "lead_record",
+          "target_doc": "qualification_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "lead_record",
+          "target_doc": "opportunity_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "lead_record",
+          "target_doc": "qualification_case",
+          "relation": "create_record",
+          "action_id": "assign"
+        },
+        {
+          "source_doc": "outreach_activity",
+          "target_doc": "lead_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "outreach_activity",
+          "target_doc": "customer_account",
+          "relation": "references"
+        },
+        {
+          "source_doc": "outreach_activity",
+          "target_doc": "qualification_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "prospect_list",
+          "target_doc": "lead_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "prospect_list",
+          "target_doc": "outreach_activity",
+          "relation": "references"
+        },
+        {
+          "source_doc": "prospect_list",
+          "target_doc": "lead_record",
+          "relation": "create_record",
+          "action_id": "activate"
+        },
+        {
+          "source_doc": "qualification_case",
+          "target_doc": "lead_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "qualification_case",
+          "target_doc": "outreach_activity",
+          "relation": "references"
+        },
+        {
+          "source_doc": "qualification_case",
+          "target_doc": "opportunity_record",
+          "relation": "references"
+        }
+      ]
+    }
   }
 }

@@ -167,7 +167,7 @@
     {
       "field_id": "opportunity",
       "label": "Opportunity",
-      "type": "Data",
+      "type": "Link",
       "required": false,
       "read_only": false,
       "default": null,
@@ -396,7 +396,9 @@
         "list",
         "record",
         "archive"
-      ]
+      ],
+      "scope": "system",
+      "ownership": "platform"
     },
     {
       "role_id": "account owner",
@@ -404,8 +406,12 @@
         "view",
         "list",
         "record",
-        "archive"
-      ]
+        "create",
+        "archive",
+        "update"
+      ],
+      "scope": "execution",
+      "ownership": "finance"
     }
   ],
   "transaction_behavior": {

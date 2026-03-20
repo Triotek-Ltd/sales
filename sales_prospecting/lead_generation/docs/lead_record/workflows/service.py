@@ -2,13 +2,15 @@
 
 from __future__ import annotations
 
+from typing import Any, cast
+
 
 DOC_ID = "lead_record"
 ARCHETYPE = "master"
 INITIAL_STATE = 'new'
 STATES = ['new', 'contacted', 'qualified', 'disqualified', 'archived']
 TERMINAL_STATES = ['archived']
-ACTION_RULES = {'create': {'allowed_in_states': ['new', 'contacted', 'qualified', 'disqualified'], 'transitions_to': None}, 'update': {'allowed_in_states': ['new', 'contacted', 'qualified', 'disqualified'], 'transitions_to': None}, 'assign': {'allowed_in_states': ['new', 'contacted', 'qualified', 'disqualified'], 'transitions_to': None}, 'qualify': {'allowed_in_states': ['new', 'contacted', 'qualified', 'disqualified'], 'transitions_to': None}, 'disqualify': {'allowed_in_states': ['new', 'contacted', 'qualified', 'disqualified'], 'transitions_to': None}, 'archive': {'allowed_in_states': ['new', 'contacted', 'qualified', 'disqualified'], 'transitions_to': 'archived'}}
+ACTION_RULES: dict[str, dict[str, Any]] = {'create': {'allowed_in_states': ['new', 'contacted', 'qualified', 'disqualified'], 'transitions_to': None}, 'update': {'allowed_in_states': ['new', 'contacted', 'qualified', 'disqualified'], 'transitions_to': None}, 'assign': {'allowed_in_states': ['new', 'contacted', 'qualified', 'disqualified'], 'transitions_to': None}, 'qualify': {'allowed_in_states': ['new', 'contacted', 'qualified', 'disqualified'], 'transitions_to': None}, 'disqualify': {'allowed_in_states': ['new', 'contacted', 'qualified', 'disqualified'], 'transitions_to': None}, 'archive': {'allowed_in_states': ['new', 'contacted', 'qualified', 'disqualified'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
 WORKFLOW_HINTS = {'business_objective': 'turn raw prospects into qualified leads with documented outreach and qualification evidence', 'actors': ['sales rep', 'sales manager', 'reviewer'], 'start_condition': 'a target customer or lead source is identified', 'ordered_steps': ['Capture the lead and basic prospect context.', 'Advance qualified prospects into opportunity management.'], 'primary_actions': ['create', 'update', 'convert', 'close'], 'primary_transitions': ['lead_record: draft -> active', 'lead_record: active -> qualified -> converted'], 'downstream_effects': ['feeds opportunity, negotiation, and forecast workflows'], 'action_actors': {'create': ['sales rep'], 'update': ['sales rep'], 'assign': ['sales rep'], 'archive': ['sales manager']}}
@@ -29,7 +31,7 @@ class WorkflowService:
 
     def next_state_for(self, action_id: str) -> str | None:
         rule = ACTION_RULES.get(action_id, {})
-        return rule.get("transitions_to")
+        return cast(str | None, rule.get("transitions_to"))
 
     def apply_action(self, action_id: str, state: str | None) -> dict:
         if not self.is_action_allowed(action_id, state):
